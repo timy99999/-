@@ -143,7 +143,7 @@
       </div>
       <div style="height:3px;background:#1A1512;margin:18px 0 34px"></div>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch">
 
         <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
           <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;aspect-ratio:4/3">
@@ -172,21 +172,21 @@
               </div>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px">
+          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:14px">
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
               <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ g_priceLabel }}</div>
             </div>
-            <sc-if value="{{ g_showAdd }}" hint-placeholder-val="{{ true }}">
-              <button onClick="{{ g_add }}" disabled="{{ g_off }}" style="font-family:'Lora',serif;font-size:15px;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;white-space:nowrap;transition:transform .16s ease,background .16s ease;background:{{ g_addBg }};color:{{ g_addColor }}" style-hover="transform:scale(1.07)">В корзину</button>
-            </sc-if>
-            <sc-if value="{{ g_showQty }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;align-items:center;gap:8px">
-                <sc-if value="{{ g_showMinus }}" hint-placeholder-val="{{ false }}">
-                  <button onClick="{{ g_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
-                </sc-if>
-                <input type="text" inputMode="numeric" value="{{ g_qty }}" onChange="{{ g_setQty }}" style="width:56px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
-                <button onClick="{{ g_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+            <sc-if value="{{ g_ready }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px">
+                  <sc-if value="{{ g_showMinus }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ g_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                  </sc-if>
+                  <input type="text" inputMode="numeric" value="{{ g_qty }}" onChange="{{ g_setQty }}" style="width:64px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <button onClick="{{ g_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+                </div>
+                <button onClick="{{ g_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:12px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.04)">В корзину</button>
               </div>
             </sc-if>
           </div>
@@ -219,21 +219,21 @@
               </div>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px">
+          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:14px">
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
               <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ z_priceLabel }}</div>
             </div>
-            <sc-if value="{{ z_showAdd }}" hint-placeholder-val="{{ true }}">
-              <button onClick="{{ z_add }}" disabled="{{ z_off }}" style="font-family:'Lora',serif;font-size:15px;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;white-space:nowrap;transition:transform .16s ease,background .16s ease;background:{{ z_addBg }};color:{{ z_addColor }}" style-hover="transform:scale(1.07)">В корзину</button>
-            </sc-if>
-            <sc-if value="{{ z_showQty }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;align-items:center;gap:8px">
-                <sc-if value="{{ z_showMinus }}" hint-placeholder-val="{{ false }}">
-                  <button onClick="{{ z_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
-                </sc-if>
-                <input type="text" inputMode="numeric" value="{{ z_qty }}" onChange="{{ z_setQty }}" style="width:56px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
-                <button onClick="{{ z_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+            <sc-if value="{{ z_ready }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px">
+                  <sc-if value="{{ z_showMinus }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ z_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                  </sc-if>
+                  <input type="text" inputMode="numeric" value="{{ z_qty }}" onChange="{{ z_setQty }}" style="width:64px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <button onClick="{{ z_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+                </div>
+                <button onClick="{{ z_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:12px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.04)">В корзину</button>
               </div>
             </sc-if>
           </div>
@@ -254,21 +254,21 @@
               <button onClick="{{ p_pickf_cm }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ p_f_cmBg }}" style-hover="transform:scale(1.07)">С курицей и грибами</button>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px">
+          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:14px">
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за пирог</div>
               <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">1200 гр, 1000 сом</div>
             </div>
-            <sc-if value="{{ p_showAdd }}" hint-placeholder-val="{{ true }}">
-              <button onClick="{{ p_add }}" disabled="{{ p_off }}" style="font-family:'Lora',serif;font-size:15px;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;white-space:nowrap;transition:transform .16s ease,background .16s ease;background:{{ p_addBg }};color:{{ p_addColor }}" style-hover="transform:scale(1.07)">В корзину</button>
-            </sc-if>
-            <sc-if value="{{ p_showQty }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;align-items:center;gap:8px">
-                <sc-if value="{{ p_showMinus }}" hint-placeholder-val="{{ false }}">
-                  <button onClick="{{ p_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
-                </sc-if>
-                <input type="text" inputMode="numeric" value="{{ p_qty }}" onChange="{{ p_setQty }}" style="width:56px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
-                <button onClick="{{ p_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+            <sc-if value="{{ p_ready }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px">
+                  <sc-if value="{{ p_showMinus }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ p_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                  </sc-if>
+                  <input type="text" inputMode="numeric" value="{{ p_qty }}" onChange="{{ p_setQty }}" style="width:64px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <button onClick="{{ p_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+                </div>
+                <button onClick="{{ p_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:12px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.04)">В корзину</button>
               </div>
             </sc-if>
           </div>
@@ -511,7 +511,7 @@ const STEPS = {
 class Component extends DCLogic {
   state = {
     page: 'home',
-    sel: { g: { dough: null, filling: null }, z: { dough: null, filling: null }, p: { dough: null, filling: null } },
+    sel: { g: { dough: null, filling: null, qty: 1 }, z: { dough: null, filling: null, qty: 1 }, p: { dough: null, filling: null, qty: 1 } },
     cart: [],
     cartOpen: false,
     cook: 'samsa',
@@ -555,10 +555,49 @@ class Component extends DCLogic {
     });
   }
 
+  qtyPlus(pid) {
+    this.setState(s => {
+      const sel = Object.assign({}, s.sel);
+      const cur = Object.assign({}, sel[pid]);
+      cur.qty = Math.min(999, (cur.qty || 1) + 1);
+      sel[pid] = cur;
+      return { sel: sel };
+    });
+  }
+  qtyMinus(pid) {
+    this.setState(s => {
+      const sel = Object.assign({}, s.sel);
+      const cur = Object.assign({}, sel[pid]);
+      cur.qty = Math.max(1, (cur.qty || 1) - 1);
+      sel[pid] = cur;
+      return { sel: sel };
+    });
+  }
+  qtySet(pid, raw) {
+    const digits = String(raw).replace(/\D+/g, '');
+    this.setState(s => {
+      const sel = Object.assign({}, s.sel);
+      const cur = Object.assign({}, sel[pid]);
+      cur.qty = digits === '' ? 1 : Math.max(1, Math.min(999, parseInt(digits, 10)));
+      sel[pid] = cur;
+      return { sel: sel };
+    });
+  }
+
   addToCart(pid) {
     if (!this.ready(pid)) return;
     const s = this.state.sel[pid];
-    this.changeQty(this.key(pid, s.dough, s.filling), 1, { pid: pid, dough: s.dough, filling: s.filling });
+    const addQty = Math.max(1, s.qty || 1);
+    const key = this.key(pid, s.dough, s.filling);
+    this.setState(st => {
+      const cart = st.cart.map(l => Object.assign({}, l));
+      const i = cart.findIndex(l => l.key === key);
+      if (i < 0) cart.push({ key: key, pid: pid, dough: s.dough, filling: s.filling, qty: addQty });
+      else cart[i].qty += addQty;
+      const sel = Object.assign({}, st.sel);
+      sel[pid] = { dough: null, filling: null, qty: 1 };
+      return { cart: cart, sel: sel };
+    });
   }
 
   changeQty(key, delta, seed) {
@@ -679,21 +718,14 @@ class Component extends DCLogic {
         v[pid + '_pickf_' + f] = () => this.pick(pid, 'filling', f);
       });
       const ready = this.ready(pid);
-      const key = this.key(pid, s.dough, s.filling);
-      const line = st.cart.find(l => l.key === key);
-      const qty = line ? line.qty : 0;
       v[pid + '_priceLabel'] = pid === 'p' ? '1200 гр, 1000 сом' : (s.filling ? this.price(pid, s.filling) + ' сом' : 'Цена');
-      v[pid + '_off'] = !ready;
-      v[pid + '_addBg'] = ready ? '#D7263D' : '#DCD6CC';
-      v[pid + '_addColor'] = ready ? '#FFF7E8' : '#8A837A';
+      v[pid + '_ready'] = ready;
       v[pid + '_add'] = () => this.addToCart(pid);
-      v[pid + '_showAdd'] = qty === 0;
-      v[pid + '_showQty'] = qty > 0;
-      v[pid + '_showMinus'] = qty > 1;
-      v[pid + '_qty'] = qty || 1;
-      v[pid + '_plus'] = () => this.changeQty(key, 1);
-      v[pid + '_minus'] = () => this.changeQty(key, -1);
-      v[pid + '_setQty'] = e => this.setQty(key, e.target.value);
+      v[pid + '_showMinus'] = (s.qty || 1) > 1;
+      v[pid + '_qty'] = s.qty || 1;
+      v[pid + '_plus'] = () => this.qtyPlus(pid);
+      v[pid + '_minus'] = () => this.qtyMinus(pid);
+      v[pid + '_setQty'] = e => this.qtySet(pid, e.target.value);
     });
 
     v.lines = st.cart.map(l => {
