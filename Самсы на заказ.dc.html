@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/classical-37a45c4d-6cc7-44df-8a2b-2a4a5065b5ed/styles.css">
+<script src="_ds/classical-37a45c4d-6cc7-44df-8a2b-2a4a5065b5ed/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+  html, body { background: #FFF7E8; }
+  *, *::before, *::after, a, button, input, textarea, select {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'><rect x='16' y='17' width='17' height='4.2' rx='2.1' fill='%233b2a1a' transform='rotate(-18 16 17)'/><ellipse cx='13' cy='13' rx='12' ry='11' fill='%23241c14'/><ellipse cx='13' cy='12.2' rx='9' ry='8' fill='%233f2f20'/><ellipse cx='10' cy='9.5' rx='3.2' ry='2.1' fill='%23604a37'/></svg>") 13 13, auto;
+  }
+  a { color: #E8720C; text-decoration: none; }
+  a:hover { color: #D7263D; }
+  ::selection { background: #FFC93C; }
+  @keyframes samWrite { from { clip-path: inset(0 103% -20% 0); } to { clip-path: inset(0 -8% -20% 0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pop3d {
+    0% { opacity: 0; transform: perspective(1000px) translate3d(-90px, 40px, -700px) rotateY(-52deg) rotateX(16deg); filter: blur(8px); }
+    70% { opacity: 1; filter: blur(0); }
+    100% { opacity: 1; transform: perspective(1000px) translate3d(0,0,0) rotateY(-11deg) rotateX(3deg); filter: blur(0); }
+  }
+  @keyframes trayOut {
+    0% { transform: translate(-6px, 6px) rotateX(26deg) scale(.86); }
+    55% { transform: translate(232px, 44px) rotateX(20deg) scale(1.02); }
+    75% { transform: translate(268px, 58px) rotateX(17deg) scale(1.05); }
+    100% { transform: translate(258px, 54px) rotateX(18deg) scale(1.04); }
+  }
+  @keyframes trayShadow { 0% { opacity: 0; } 60% { opacity: .22; } 100% { opacity: .18; } }
+  @keyframes steam {
+    0% { opacity: 0; transform: translateY(6px) scale(.6); }
+    25% { opacity: .55; }
+    100% { opacity: 0; transform: translateY(-92px) scale(1.5); }
+  }
+  @keyframes ovenGlow { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
+  @keyframes doorOpen { from { transform: perspective(700px) rotateX(4deg); } to { transform: perspective(700px) rotateX(64deg); } }
+  @keyframes floaty { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-14px) rotate(2deg); } }
+  @keyframes plateIn { from { opacity: 0; transform: scale(.82) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;width:100%;background:#FFF7E8;font-family:'Lora',Georgia,serif;color:#1A1512">
+
+  <div style="position:sticky;top:0;z-index:70;display:flex;justify-content:center;padding:14px 16px;pointer-events:none">
+    <nav style="pointer-events:auto;display:flex;align-items:center;gap:4px;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:7px 9px;box-shadow:0 7px 0 rgba(26,21,18,.16)">
+      <button onClick="{{ goHome }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;background:transparent;border:none;border-radius:999px;padding:9px 15px;transition:transform .16s ease,background .16s ease" style-hover="transform:scale(1.09);background:#FFC93C">Главная</button>
+      <button onClick="{{ goOrder }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;background:transparent;border:none;border-radius:999px;padding:9px 15px;transition:transform .16s ease,background .16s ease" style-hover="transform:scale(1.09);background:#FFC93C">Заказать</button>
+      <button onClick="{{ goCook }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;background:transparent;border:none;border-radius:999px;padding:9px 15px;transition:transform .16s ease,background .16s ease" style-hover="transform:scale(1.09);background:#FFC93C">Приготовление</button>
+      <button onClick="{{ goReviews }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;background:transparent;border:none;border-radius:999px;padding:9px 15px;transition:transform .16s ease,background .16s ease" style-hover="transform:scale(1.09);background:#FFC93C">Отзывы</button>
+      <button onClick="{{ goContacts }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;background:transparent;border:none;border-radius:999px;padding:9px 15px;transition:transform .16s ease,background .16s ease" style-hover="transform:scale(1.09);background:#FFC93C">Контакты</button>
+      <button onClick="{{ openCart }}" style="display:flex;align-items:center;gap:8px;font-family:'Lora',serif;font-size:15px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;padding:8px 18px;margin-left:6px;transition:transform .16s ease" style-hover="transform:scale(1.09)">
+        Корзина
+        <span style="min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;background:#FFC93C;color:#1A1512;border-radius:999px;font-size:13px;font-variant-numeric:tabular-nums;padding:0 6px">{{ cartCount }}</span>
+      </button>
+    </nav>
+  </div>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Главная">
+
+    <section style="position:relative;max-width:1440px;min-width:1240px;margin:0 auto;padding:0 48px 40px;display:grid;grid-template-columns:44% 56%;min-height:900px;overflow:hidden">
+
+      <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:44px;padding-bottom:56px">
+        <div style="display:flex;flex-direction:column;gap:14px;perspective:1000px">
+          <button onClick="{{ goOrder }}" style="align-self:flex-start;text-align:left;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#1A1512;background:#F28C1A;border:3px solid #1A1512;border-radius:6px;padding:16px 30px 16px 22px;white-space:nowrap;box-shadow:10px 10px 0 #1A1512;animation:pop3d 1.1s .25s cubic-bezier(.2,.8,.25,1) both;transition:transform .16s ease" style-hover="transform:scale(1.05) rotateY(-11deg) rotateX(3deg)">Узбекские самсы</button>
+          <button onClick="{{ goOrder }}" style="align-self:flex-start;text-align:left;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:6px;padding:16px 30px 16px 22px;white-space:nowrap;box-shadow:10px 10px 0 #1A1512;animation:pop3d 1.1s .5s cubic-bezier(.2,.8,.25,1) both;transition:transform .16s ease" style-hover="transform:scale(1.05) rotateY(-11deg) rotateX(3deg)">Полуфабрикаты</button>
+          <button onClick="{{ goOrder }}" style="align-self:flex-start;text-align:left;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:6px;padding:16px 30px 16px 22px;white-space:nowrap;box-shadow:10px 10px 0 #1A1512;animation:pop3d 1.1s .75s cubic-bezier(.2,.8,.25,1) both;transition:transform .16s ease" style-hover="transform:scale(1.05) rotateY(-11deg) rotateX(3deg)">Пироги</button>
+        </div>
+
+        <div>
+          <div style="font-family:'Caveat',cursive;font-weight:700;font-size:180px;line-height:.86;color:#E8720C;animation:samWrite 1.9s .4s cubic-bezier(.5,.05,.5,.95) both">Самсы</div>
+          <div style="font-size:19px;letter-spacing:.42em;text-transform:uppercase;color:#1A1512;margin-top:14px;animation:fadeUp .7s 2.2s both">на заказ</div>
+        </div>
+      </div>
+
+      <div style="position:relative;min-height:860px">
+        <div style="position:absolute;right:0;top:26px;width:250px;height:250px;animation:plateIn 1s .15s cubic-bezier(.2,.8,.25,1) both">
+          <div style="width:100%;height:100%;animation:floaty 6s 1.2s ease-in-out infinite">
+            <div style="width:100%;height:100%;border-radius:50%;overflow:hidden;border:6px solid #FFF7E8;outline:3px solid #1A1512;box-shadow:0 16px 34px rgba(26,21,18,.22)">
+              <img src="uploads/готовые самсы.jpg" alt="Горячие узбекские самсы" style="width:100%;height:100%;object-fit:cover">
+            </div>
+          </div>
+          <div style="position:absolute;left:-26px;bottom:8px;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;padding:6px 14px;white-space:nowrap;font-size:13px;letter-spacing:.08em;text-transform:uppercase;animation:fadeUp .6s 1.1s both">с пылу с жару</div>
+        </div>
+
+        <div style="position:absolute;left:-10px;top:290px;width:620px;height:380px">
+          <div style="position:absolute;left:60px;top:20px;width:480px;height:340px;border-radius:50%;background:#FFE08A;filter:blur(34px);opacity:.75"></div>
+
+          <div style="position:absolute;left:250px;top:250px;width:300px;height:36px;border-radius:50%;background:#1A1512;filter:blur(12px);opacity:0;animation:trayShadow 2.2s .7s ease-out both"></div>
+
+          <div style="position:absolute;left:0;top:0;width:300px;height:36px;pointer-events:none"></div>
+
+          <div style="position:absolute;left:20px;top:96px;width:300px;height:140px;transform-origin:left center;animation:trayOut 2.2s .7s cubic-bezier(.25,.9,.3,1) both">
+            <div style="position:relative;width:100%;height:100%;background:#2b2118;border:7px solid #1d1610;border-radius:12px;box-shadow:inset 0 6px 18px rgba(0,0,0,.55),0 12px 22px rgba(26,21,18,.35);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px">
+              <div style="background-image:url('uploads/готовые самсы.jpg');background-size:340%;background-position:14% 22%;clip-path:polygon(50% 3%,97% 90%,3% 90%);transform:rotate(-3deg)"></div>
+              <div style="background-image:url('uploads/готовые самсы.jpg');background-size:340%;background-position:62% 30%;clip-path:polygon(50% 3%,97% 90%,3% 90%);transform:rotate(2deg)"></div>
+              <div style="background-image:url('uploads/готовые самсы.jpg');background-size:340%;background-position:36% 74%;clip-path:polygon(50% 3%,97% 90%,3% 90%);transform:rotate(-1deg)"></div>
+              <div style="background-image:url('uploads/готовые самсы.jpg');background-size:340%;background-position:82% 62%;clip-path:polygon(50% 3%,97% 90%,3% 90%);transform:rotate(3deg)"></div>
+              <div style="background-image:url('uploads/готовые самсы.jpg');background-size:340%;background-position:8% 88%;clip-path:polygon(50% 3%,97% 90%,3% 90%);transform:rotate(-2deg)"></div>
+              <div style="background-image:url('uploads/готовые самсы.jpg');background-size:340%;background-position:70% 8%;clip-path:polygon(50% 3%,97% 90%,3% 90%);transform:rotate(1deg)"></div>
+            </div>
+            <div style="position:absolute;left:34px;top:-40px;width:26px;height:26px;border-radius:50%;background:#FFFFFF;filter:blur(7px);animation:steam 3.4s 2.5s ease-out infinite"></div>
+            <div style="position:absolute;left:130px;top:-50px;width:32px;height:32px;border-radius:50%;background:#FFFFFF;filter:blur(8px);animation:steam 3.8s 3.1s ease-out infinite"></div>
+            <div style="position:absolute;left:222px;top:-36px;width:22px;height:22px;border-radius:50%;background:#FFFFFF;filter:blur(6px);animation:steam 3.2s 3.7s ease-out infinite"></div>
+          </div>
+
+          <div style="position:absolute;left:0;top:0;width:330px;height:352px;border-radius:18px;background:#241c14;border:3px solid #120e0a;box-shadow:0 16px 0 rgba(26,21,18,.14)">
+            <div style="position:absolute;left:0;right:0;top:0;height:58px;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 16px;border-bottom:3px solid #120e0a">
+              <div style="width:22px;height:22px;border-radius:50%;background:#F28C1A;border:2px solid #120e0a"></div>
+              <div style="width:22px;height:22px;border-radius:50%;background:#FFC93C;border:2px solid #120e0a"></div>
+              <div style="width:22px;height:22px;border-radius:50%;background:#D7263D;border:2px solid #120e0a"></div>
+            </div>
+            <div style="position:absolute;left:18px;right:18px;top:74px;bottom:74px;border-radius:10px;overflow:hidden;background:#3a2a18;border:2px solid #120e0a">
+              <div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 50% 108%,#FFD478 0%,#F28C1A 34%,#8a4d12 68%,#3a2a18 100%);animation:ovenGlow 2.8s ease-in-out infinite"></div>
+              <div style="position:absolute;left:8px;right:8px;top:56%;height:3px;background:rgba(26,21,18,.55)"></div>
+              <div style="position:absolute;left:8px;right:8px;top:78%;height:3px;background:rgba(26,21,18,.4)"></div>
+            </div>
+            <div style="position:absolute;left:10px;right:10px;bottom:-4px;height:78px;transform-origin:top center;background:#2e2318;border:3px solid #120e0a;border-radius:8px;animation:doorOpen 1s .2s cubic-bezier(.3,.8,.3,1) both">
+              <div style="position:absolute;left:22%;right:22%;top:16px;height:12px;border-radius:999px;background:#F28C1A;border:2px solid #120e0a"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="position:absolute;right:0;bottom:40px;max-width:440px;text-align:right;animation:fadeUp .9s 2.5s both">
+          <p style="font-family:'Caveat',cursive;font-weight:500;font-size:29px;line-height:1.42;color:#1A1512;margin:0;text-wrap:pretty">Приготовлены из самых лучших продуктов.<br>Сделаны с душой и любовью.<br>Доверьте свой выбор нам.<br>Мы обещаем вас приятно удивить незабываемым вкусом узбекской кухни.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="order" style="max-width:1320px;margin:0 auto;padding:56px 48px 20px">
+      <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:8px">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0">Заказать</h2>
+        <span style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#8A837A">выберите тесто и начинку</span>
+      </div>
+      <div style="height:3px;background:#1A1512;margin:18px 0 34px"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start">
+
+        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
+          <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;aspect-ratio:4/3">
+            <img src="uploads/готовые самсы.jpg" alt="Готовые самсы" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <h3 style="font-family:'Lora',serif;font-size:25px;font-weight:600;color:#1A1512;margin:0">Готовые самсы</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Тесто</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <button onClick="{{ g_pick_layered }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_d_layeredBg }}" style-hover="transform:scale(1.07)">Слоёные</button>
+                <button onClick="{{ g_pick_short }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_d_shortBg }}" style-hover="transform:scale(1.07)">Песочные</button>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+                <button onClick="{{ g_pickf_meat }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_f_meatBg }}" style-hover="transform:scale(1.07)">С мясом</button>
+                <button onClick="{{ g_pickf_chicken }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_f_chickenBg }}" style-hover="transform:scale(1.07)">С курицей</button>
+                <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <button onClick="{{ g_pickf_pumpkin }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_f_pumpkinBg }}" style-hover="transform:scale(1.07)">С тыквой и мясом</button>
+                  <span style="font-size:11px;color:#8A837A;padding-left:16px">по сезону</span>
+                </div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px">
+            <div>
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ g_priceLabel }}</div>
+            </div>
+            <sc-if value="{{ g_showAdd }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ g_add }}" disabled="{{ g_off }}" style="font-family:'Lora',serif;font-size:15px;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;white-space:nowrap;transition:transform .16s ease,background .16s ease;background:{{ g_addBg }};color:{{ g_addColor }}" style-hover="transform:scale(1.07)">В корзину</button>
+            </sc-if>
+            <sc-if value="{{ g_showQty }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px">
+                <sc-if value="{{ g_showMinus }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ g_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                </sc-if>
+                <input type="text" inputMode="numeric" value="{{ g_qty }}" onChange="{{ g_setQty }}" style="width:56px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
+                <button onClick="{{ g_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+              </div>
+            </sc-if>
+          </div>
+        </article>
+
+        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
+          <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;aspect-ratio:4/3">
+            <img src="uploads/Замороженные самсы.jpeg" alt="Замороженные самсы" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <h3 style="font-family:'Lora',serif;font-size:25px;font-weight:600;color:#1A1512;margin:0">Замороженные самсы</h3>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Тесто</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <button onClick="{{ z_pick_layered }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_d_layeredBg }}" style-hover="transform:scale(1.07)">Слоёные</button>
+                <button onClick="{{ z_pick_short }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_d_shortBg }}" style-hover="transform:scale(1.07)">Песочные</button>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+                <button onClick="{{ z_pickf_meat }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_f_meatBg }}" style-hover="transform:scale(1.07)">С мясом</button>
+                <button onClick="{{ z_pickf_chicken }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_f_chickenBg }}" style-hover="transform:scale(1.07)">С курицей</button>
+                <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:3px">
+                  <button onClick="{{ z_pickf_pumpkin }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_f_pumpkinBg }}" style-hover="transform:scale(1.07)">С тыквой и мясом</button>
+                  <span style="font-size:11px;color:#8A837A;padding-left:16px">по сезону</span>
+                </div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px">
+            <div>
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ z_priceLabel }}</div>
+            </div>
+            <sc-if value="{{ z_showAdd }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ z_add }}" disabled="{{ z_off }}" style="font-family:'Lora',serif;font-size:15px;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;white-space:nowrap;transition:transform .16s ease,background .16s ease;background:{{ z_addBg }};color:{{ z_addColor }}" style-hover="transform:scale(1.07)">В корзину</button>
+            </sc-if>
+            <sc-if value="{{ z_showQty }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px">
+                <sc-if value="{{ z_showMinus }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ z_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                </sc-if>
+                <input type="text" inputMode="numeric" value="{{ z_qty }}" onChange="{{ z_setQty }}" style="width:56px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
+                <button onClick="{{ z_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+              </div>
+            </sc-if>
+          </div>
+        </article>
+
+        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
+          <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;aspect-ratio:4/3">
+            <img src="uploads/пирог.jpg" alt="Пирог" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <div>
+            <h3 style="font-family:'Lora',serif;font-size:25px;font-weight:600;color:#1A1512;margin:0">Пироги</h3>
+            <span style="font-size:11px;color:#8A837A">замороженные</span>
+          </div>
+          <div>
+            <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <button onClick="{{ p_pickf_mp }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ p_f_mpBg }}" style-hover="transform:scale(1.07)">С мясом и картошкой</button>
+              <button onClick="{{ p_pickf_cm }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ p_f_cmBg }}" style-hover="transform:scale(1.07)">С курицей и грибами</button>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px">
+            <div>
+              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за пирог</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">1200 гр, 1000 сом</div>
+            </div>
+            <sc-if value="{{ p_showAdd }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ p_add }}" disabled="{{ p_off }}" style="font-family:'Lora',serif;font-size:15px;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;white-space:nowrap;transition:transform .16s ease,background .16s ease;background:{{ p_addBg }};color:{{ p_addColor }}" style-hover="transform:scale(1.07)">В корзину</button>
+            </sc-if>
+            <sc-if value="{{ p_showQty }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px">
+                <sc-if value="{{ p_showMinus }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ p_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                </sc-if>
+                <input type="text" inputMode="numeric" value="{{ p_qty }}" onChange="{{ p_setQty }}" style="width:56px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
+                <button onClick="{{ p_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+              </div>
+            </sc-if>
+          </div>
+        </article>
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:38px">
+        <p style="max-width:760px;text-align:center;font-size:16px;line-height:1.6;color:#1A1512;border-top:3px solid #1A1512;border-bottom:3px solid #1A1512;padding:16px 0;margin:0">Мясо исключительно из вырезки говядины Халяль с минимальным количеством жира</p>
+      </div>
+    </section>
+
+    <section id="contacts" style="max-width:1320px;margin:0 auto;padding:64px 48px 80px;text-align:center">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0 0 8px">Контакты</h2>
+      <p style="font-size:16px;color:#8A837A;margin:0 0 34px">Напишите или позвоните — ответим быстро</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:18px">
+        <a href="{{ telHref }}" style="font-family:'Lora',serif;font-size:19px;color:#1A1512;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:18px 42px;box-shadow:0 8px 0 rgba(26,21,18,.18);transition:transform .18s ease" style-hover="transform:scale(1.09)">Позвонить</a>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="font-family:'Lora',serif;font-size:19px;color:#1A1512;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:18px 42px;box-shadow:0 8px 0 rgba(26,21,18,.18);transition:transform .18s ease" style-hover="transform:scale(1.09)">WhatsApp</a>
+        <a href="https://www.instagram.com/samsy312?igsh=anh2cG1vaWM0cGt4" target="_blank" rel="noopener" style="font-family:'Lora',serif;font-size:19px;color:#1A1512;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:18px 42px;box-shadow:0 8px 0 rgba(26,21,18,.18);transition:transform .18s ease" style-hover="transform:scale(1.09)">Instagram</a>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCook }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Способ приготовления" style="max-width:1320px;margin:0 auto;padding:40px 48px 80px">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0 0 28px;text-align:center">Инструкция по приготовлению</h2>
+
+    <div style="display:flex;justify-content:center;margin-bottom:44px">
+      <div style="display:flex;width:520px;border:3px solid #1A1512;border-radius:999px;overflow:hidden;background:#F28C1A;box-shadow:0 8px 0 rgba(26,21,18,.18)">
+        <button onClick="{{ pickSamsa }}" style="flex:1;font-family:'Lora',serif;font-size:19px;color:#1A1512;border:none;border-right:3px solid #1A1512;padding:18px 0;transition:background .18s ease,transform .18s ease;background:{{ samsaTabBg }}" style-hover="transform:scale(1.03)">Самсы</button>
+        <button onClick="{{ pickPie }}" style="flex:1;font-family:'Lora',serif;font-size:19px;color:#1A1512;border:none;padding:18px 0;transition:background .18s ease,transform .18s ease;background:{{ pieTabBg }}" style-hover="transform:scale(1.03)">Пирог</button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start">
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;line-height:1.15;color:#1A1512;margin:0 0 22px">{{ cookTitle }}</h3>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px">
+          <sc-for list="{{ cookSteps }}" as="step" hint-placeholder-count="5">
+            <li style="display:flex;gap:16px;align-items:flex-start">
+              <span style="flex:none;width:40px;height:40px;border-radius:50%;background:#FFC93C;border:3px solid #1A1512;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;font-variant-numeric:tabular-nums">{{ step.n }}</span>
+              <span style="font-size:17px;line-height:1.6;color:#1A1512;padding-top:7px">{{ step.text }}</span>
+            </li>
+          </sc-for>
+        </ol>
+        <sc-if value="{{ showVideo }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:14px;margin-top:32px">
+          <a href="https://www.instagram.com/reel/DE1ZR6hI5u9/?igsh=MWRtY2tuc25hZzQzcg==" target="_blank" rel="noopener" style="font-family:'Lora',serif;font-size:18px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;padding:15px 34px;white-space:nowrap;box-shadow:0 7px 0 rgba(26,21,18,.18);transition:transform .18s ease" style-hover="transform:scale(1.08)">Смотреть видео</a>
+          <span style="font-size:14px;color:#8A837A">Instagram, 40 секунд</span>
+        </div>
+        </sc-if>
+      </div>
+      <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;overflow:hidden">
+        <img src="uploads/Инструкция.jpeg" alt="Смазываем самсы яйцом перед выпечкой" style="width:100%;height:auto">
+      </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isReviews }}" hint-placeholder-val="{{ false }}">
+  <main data-screen-label="Отзывы" style="max-width:1320px;margin:0 auto;padding:40px 48px 80px">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0 0 8px;text-align:center">Отзывы</h2>
+    <p style="text-align:center;font-family:'Caveat',cursive;font-size:26px;color:#8A837A;margin:0 0 36px">Скриншоты и фото от наших гостей — перетащите файлы в рамки</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px"><image-slot id="rev1" shape="rect" placeholder="Отзыв 1"></image-slot></div>
+      <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px"><image-slot id="rev2" shape="rect" placeholder="Отзыв 2"></image-slot></div>
+      <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px"><image-slot id="rev3" shape="rect" placeholder="Отзыв 3"></image-slot></div>
+      <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px"><image-slot id="rev4" shape="rect" placeholder="Отзыв 4"></image-slot></div>
+      <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px"><image-slot id="rev5" shape="rect" placeholder="Отзыв 5"></image-slot></div>
+      <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px"><image-slot id="rev6" shape="rect" placeholder="Отзыв 6"></image-slot></div>
+    </div>
+  </main>
+  </sc-if>
+
+  <footer style="background:#1A1512;color:#FFF7E8;padding:44px 48px">
+    <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:#F28C1A;line-height:1.1">Узбекские самсы на заказ</div>
+        <div style="font-size:16px;color:#FFE08A;margin-top:6px">Принимаем заказ {{ daysText }}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+        <div style="width:58px;height:58px;border-radius:50%;border:2px solid #FFC93C;color:#FFC93C;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600">حلال</span>
+          <span style="font-size:8px;letter-spacing:.12em">HALAL</span>
+        </div>
+        <a href="{{ telHref }}" style="font-family:'Cormorant Garamond',serif;font-size:30px;font-variant-numeric:tabular-nums;color:#FFF7E8;transition:transform .16s ease;display:inline-block" style-hover="transform:scale(1.06)">{{ phone }}</a>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Корзина" style="position:fixed;inset:0;z-index:90;background:#FFF7E8;overflow:auto;animation:fadeIn .25s both">
+    <div style="max-width:1320px;margin:0 auto;padding:34px 48px 70px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:600;margin:0">Корзина</h2>
+        <button onClick="{{ closeCart }}" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;padding:12px 26px;transition:transform .16s ease" style-hover="transform:scale(1.07)">Продолжить покупки</button>
+      </div>
+      <div style="height:3px;background:#1A1512;margin:14px 0 30px"></div>
+
+      <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="border:3px dashed #1A1512;border-radius:16px;padding:56px 24px;text-align:center">
+              <div style="font-family:'Caveat',cursive;font-size:32px;color:#8A837A;margin-bottom:18px">Здесь пока пусто</div>
+              <button onClick="{{ goOrderFromCart }}" style="font-family:'Lora',serif;font-size:16px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;padding:13px 30px;transition:transform .16s ease" style-hover="transform:scale(1.07)">Перейти к меню</button>
+            </div>
+          </sc-if>
+          <sc-for list="{{ lines }}" as="line" hint-placeholder-count="2">
+            <article style="display:grid;grid-template-columns:190px 1fr;gap:20px;background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:16px;box-shadow:7px 7px 0 rgba(26,21,18,.12)">
+              <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;height:150px">
+                <img src="{{ line.photo }}" alt="{{ line.title }}" style="width:100%;height:100%;object-fit:cover">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+                  <h3 style="font-family:'Lora',serif;font-size:22px;font-weight:600;margin:0">{{ line.title }}</h3>
+                  <button onClick="{{ line.remove }}" style="font-size:13px;color:#8A837A;background:transparent;border:none;text-decoration:underline">удалить</button>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <sc-for list="{{ line.opts }}" as="opt" hint-placeholder-count="4">
+                    <button onClick="{{ opt.pick }}" style="font-family:'Lora',serif;font-size:14px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:7px 14px;transition:transform .16s ease,background .16s ease;background:{{ opt.bg }}" style-hover="transform:scale(1.07)">{{ opt.label }}</button>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto">
+                  <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums">{{ line.priceLabel }}</div>
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <sc-if value="{{ line.showMinus }}" hint-placeholder-val="{{ true }}">
+                      <button onClick="{{ line.minus }}" style="width:38px;height:38px;font-size:19px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                    </sc-if>
+                    <input type="text" inputMode="numeric" value="{{ line.qty }}" onChange="{{ line.setQty }}" style="width:54px;height:38px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:21px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
+                    <button onClick="{{ line.plus }}" style="width:38px;height:38px;font-size:19px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+
+        <div style="background:#FFFDF6;border:3px solid #1A1512;border-radius:20px;padding:26px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;margin:0 0 16px">Оформление заказа</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;padding-bottom:14px;border-bottom:2px solid #1A1512">
+            <sc-for list="{{ rows }}" as="row" hint-placeholder-count="2">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;font-size:15px">
+                <span style="color:#1A1512">{{ row.name }}</span>
+                <span style="font-variant-numeric:tabular-nums;color:#8A837A;white-space:nowrap">{{ row.sum }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:14px 0 20px">
+            <span style="font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Итого</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;font-variant-numeric:tabular-nums;color:#D7263D">{{ totalLabel }}</span>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <label style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Имя</span>
+              <input type="text" value="{{ fName }}" onChange="{{ setName }}" placeholder="Как вас зовут" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid {{ nameBorder }};border-radius:10px;padding:12px 14px">
+              <span style="font-size:12px;color:#D7263D">{{ nameError }}</span>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Телефон</span>
+              <input type="tel" inputMode="tel" value="{{ fPhone }}" onChange="{{ setPhone }}" placeholder="+996555882810" style="font-family:'Lora',serif;font-size:16px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid {{ phoneBorder }};border-radius:10px;padding:12px 14px">
+              <span style="font-size:12px;color:#D7263D">{{ phoneError }}</span>
+            </label>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Способ доставки</span>
+              <button onClick="{{ pickPickup }}" style="display:flex;align-items:center;gap:12px;text-align:left;font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px;padding:12px 14px;transition:transform .16s ease" style-hover="transform:scale(1.02)">
+                <span style="flex:none;width:24px;height:24px;border:3px solid #1A1512;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#1A1512;background:{{ pickupBox }}">{{ pickupMark }}</span>
+                Самовывоз
+              </button>
+              <sc-if value="{{ yandexOn }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ pickYandex }}" style="display:flex;align-items:center;gap:12px;text-align:left;font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px;padding:12px 14px;transition:transform .16s ease" style-hover="transform:scale(1.02)">
+                <span style="flex:none;width:24px;height:24px;border:3px solid #1A1512;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#1A1512;background:{{ yandexBox }}">{{ yandexMark }}</span>
+                <span>Яндекс доставка <span style="font-size:12px;color:#8A837A">(оплачивается вами)</span></span>
+              </button>
+              </sc-if>
+              <span style="font-size:12px;color:#D7263D">{{ deliveryError }}</span>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Комментарий к заказу <span style="text-transform:none;letter-spacing:0">— необязательно</span></span>
+              <textarea rows="3" value="{{ fComment }}" onChange="{{ setComment }}" placeholder="Время, адрес, пожелания" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px;padding:12px 14px;resize:vertical"></textarea>
+            </label>
+            <button onClick="{{ submit }}" disabled="{{ submitOff }}" style="font-family:'Lora',serif;font-size:19px;border:3px solid #1A1512;border-radius:999px;padding:16px 20px;transition:transform .18s ease,background .18s ease;background:{{ submitBg }};color:{{ submitColor }}" style-hover="transform:scale(1.04)">Оформить заказ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:120;background:rgba(26,21,18,.62);display:flex;align-items:center;justify-content:center;padding:32px;animation:fadeIn .25s both">
+    <div style="max-width:880px;width:100%;background:#FFF7E8;border:3px solid #1A1512;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 26px 60px rgba(26,21,18,.4)">
+      <img src="uploads/Заказ принят.jpeg" alt="Заказ принят" style="width:100%;height:100%;object-fit:cover">
+      <div style="padding:36px 32px;display:flex;flex-direction:column;justify-content:center;gap:16px">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:600;color:#E8720C;margin:0;line-height:1.05">Спасибо за заказ!</h3>
+        <p style="font-size:17px;line-height:1.6;margin:0">В течении {{ daysText }} ваш заказ будет принят и мы свяжемся с вами!</p>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="align-self:flex-start;font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:13px 28px;transition:transform .16s ease" style-hover="transform:scale(1.07)">Написать в WhatsApp</a>
+        <button onClick="{{ closeDone }}" style="align-self:flex-start;font-family:'Lora',serif;font-size:15px;color:#8A837A;background:transparent;border:none;text-decoration:underline">На главную</button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+996 508 457 577&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Контакты&quot;},&quot;acceptDays&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2,&quot;min&quot;:1,&quot;max&quot;:7,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Заказ&quot;},&quot;pumpkinSeason&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Меню&quot;},&quot;yandexDelivery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Заказ&quot;}}">
+const YEL = '#FFC93C', GRY = '#EDE6DA';
+const PHOTOS = { g: 'uploads/готовые самсы.jpg', z: 'uploads/Замороженные самсы.jpeg', p: 'uploads/пирог.jpg' };
+const TITLES = { g: 'Готовые самсы', z: 'Замороженные самсы', p: 'Пирог' };
+const DOUGH = { layered: 'Слоёные', short: 'Песочные' };
+const FILL = { meat: 'С мясом', chicken: 'С курицей', pumpkin: 'С тыквой и мясом', mp: 'С мясом и картошкой', cm: 'С курицей и грибами' };
+const PRICE = {
+  g: { meat: 75, chicken: 70, pumpkin: 70 },
+  z: { meat: 70, chicken: 65, pumpkin: 65 },
+  p: { mp: 1000, cm: 1000 }
+};
+const STEPS = {
+  samsa: {
+    title: 'Как быстро подать к столу горячие и вкусные самсы:',
+    steps: [
+      'Нужно растительным маслом смазать противень, или постелить пергамент, чтобы самсы не прилипли',
+      'Выкладываем замороженные самсы на противень',
+      'Самсы уже смазаны яйцом, но при желании можете смазать повторно для дополнительного блеска',
+      'Ставим в духовку на 40–45 минут при 180 градусов',
+      'Вытаскиваем самсы из духовки и подаём к столу горячие и вкусные самсы'
+    ]
+  },
+  pie: {
+    title: 'Как быстро подать к столу вкусный и сытный пирог:',
+    steps: [
+      'Нужно растительным маслом смазать противень, или постелить пергамент, чтобы пирог не прилип',
+      'Кладём замороженный пирог на противень',
+      'Пирог уже смазан яйцом, но при желании можете смазать повторно для дополнительного блеска',
+      'Ставим в духовку на 45–60 минут при 180 градусов',
+      'Вытаскиваем свежий пирог из духовки и подаём к столу'
+    ]
+  }
+};
+
+class Component extends DCLogic {
+  state = {
+    page: 'home',
+    sel: { g: { dough: null, filling: null }, z: { dough: null, filling: null }, p: { dough: null, filling: null } },
+    cart: [],
+    cartOpen: false,
+    cook: 'samsa',
+    form: { name: '', phone: '', delivery: '', comment: '' },
+    touched: false,
+    done: false
+  };
+
+  key(pid, dough, filling) { return pid + '|' + (dough || '') + '|' + (filling || ''); }
+  price(pid, filling) { return (PRICE[pid] && PRICE[pid][filling]) || 0; }
+  ready(pid) {
+    const s = this.state.sel[pid];
+    return pid === 'p' ? !!s.filling : !!(s.dough && s.filling);
+  }
+  lineTitle(pid, dough, filling) {
+    const parts = [TITLES[pid]];
+    if (dough) parts.push(DOUGH[dough].toLowerCase());
+    if (filling) parts.push(FILL[filling].toLowerCase());
+    return parts.join(', ');
+  }
+
+  scrollTo(id) {
+    requestAnimationFrame(() => {
+      const el = document.getElementById(id);
+      if (el) window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - 90, behavior: 'smooth' });
+    });
+  }
+  go(page) { this.setState({ page: page, cartOpen: false }); window.scrollTo({ top: 0 }); }
+  goSection(id) {
+    if (this.state.page !== 'home') this.setState({ page: 'home', cartOpen: false }, () => this.scrollTo(id));
+    else { this.setState({ cartOpen: false }); this.scrollTo(id); }
+  }
+
+  pick(pid, group, value) {
+    this.setState(s => {
+      const sel = Object.assign({}, s.sel);
+      const cur = Object.assign({}, sel[pid]);
+      cur[group] = cur[group] === value ? null : value;
+      sel[pid] = cur;
+      return { sel: sel };
+    });
+  }
+
+  addToCart(pid) {
+    if (!this.ready(pid)) return;
+    const s = this.state.sel[pid];
+    this.changeQty(this.key(pid, s.dough, s.filling), 1, { pid: pid, dough: s.dough, filling: s.filling });
+  }
+
+  changeQty(key, delta, seed) {
+    this.setState(st => {
+      const cart = st.cart.map(l => Object.assign({}, l));
+      const i = cart.findIndex(l => l.key === key);
+      if (i < 0) { if (seed) cart.push({ key: key, pid: seed.pid, dough: seed.dough, filling: seed.filling, qty: 1 }); }
+      else {
+        cart[i].qty += delta;
+        if (cart[i].qty < 1) cart.splice(i, 1);
+      }
+      return { cart: cart };
+    });
+  }
+
+  setQty(key, raw) {
+    const digits = String(raw).replace(/\D+/g, '');
+    this.setState(st => {
+      const cart = st.cart.map(l => Object.assign({}, l));
+      const i = cart.findIndex(l => l.key === key);
+      if (i < 0) return {};
+      if (digits === '') { cart[i].qty = 1; return { cart: cart }; }
+      const n = Math.min(999, parseInt(digits, 10));
+      if (n < 1) cart.splice(i, 1); else cart[i].qty = n;
+      return { cart: cart };
+    });
+  }
+
+  removeLine(key) {
+    this.setState(st => ({ cart: st.cart.filter(l => l.key !== key) }));
+  }
+
+  reLine(key, group, value) {
+    this.setState(st => {
+      const cart = st.cart.map(l => Object.assign({}, l));
+      const i = cart.findIndex(l => l.key === key);
+      if (i < 0) return {};
+      const line = cart[i];
+      const next = { pid: line.pid, dough: line.dough, filling: line.filling };
+      next[group] = value;
+      const nk = this.key(next.pid, next.dough, next.filling);
+      if (nk === key) return {};
+      const j = cart.findIndex(l => l.key === nk);
+      if (j > -1) { cart[j].qty += line.qty; cart.splice(i, 1); }
+      else { cart[i] = { key: nk, pid: next.pid, dough: next.dough, filling: next.filling, qty: line.qty }; }
+      return { cart: cart };
+    });
+  }
+
+  setField(name, value) {
+    this.setState(st => ({ form: Object.assign({}, st.form, { [name]: value }) }));
+  }
+  phoneOk(v) {
+    const c = String(v).replace(/[\s()-]/g, '');
+    return /^\+996\d{9}$/.test(c) || /^0\d{9}$/.test(c);
+  }
+  validity() {
+    const f = this.state.form;
+    return {
+      name: f.name.trim().length > 1 ? '' : 'Укажите имя',
+      phone: this.phoneOk(f.phone) ? '' : 'Например: +996555882810 или 0555882810',
+      delivery: f.delivery ? '' : 'Выберите способ доставки'
+    };
+  }
+
+  submit() {
+    const v = this.validity();
+    if (v.name || v.phone || v.delivery || !this.state.cart.length) { this.setState({ touched: true }); return; }
+    this.setState({ done: true, cartOpen: false });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const phone = this.props.phone || '+996 508 457 577';
+    const rawPhone = phone.replace(/[^\d+]/g, '');
+    const days = Math.max(1, parseInt(this.props.acceptDays != null ? this.props.acceptDays : 2, 10));
+    const dayWord = days === 1 ? 'дня' : (days >= 2 && days <= 4 ? 'дней' : 'дней');
+    const pumpkinOn = this.props.pumpkinSeason !== false;
+    const yandexOn = this.props.yandexDelivery !== false;
+
+    const v = {
+      isHome: st.page === 'home', isCook: st.page === 'cook', isReviews: st.page === 'reviews',
+      cartOpen: st.cartOpen, done: st.done,
+      phone: phone, telHref: 'tel:' + rawPhone, waHref: 'https://wa.me/' + rawPhone,
+      daysText: days + ' ' + dayWord,
+      pumpkinOn: pumpkinOn, yandexOn: yandexOn,
+      goHome: () => this.go('home'),
+      goCook: () => this.go('cook'),
+      goReviews: () => this.go('reviews'),
+      goOrder: () => this.goSection('order'),
+      goContacts: () => this.goSection('contacts'),
+      goOrderFromCart: () => this.goSection('order'),
+      openCart: () => this.setState({ cartOpen: true, done: false }),
+      closeCart: () => this.setState({ cartOpen: false }),
+      closeDone: () => { this.setState({ done: false, cart: [], form: { name: '', phone: '', delivery: '', comment: '' }, touched: false, page: 'home' }); window.scrollTo({ top: 0 }); },
+      cartCount: st.cart.reduce((a, l) => a + l.qty, 0),
+      cartEmpty: st.cart.length === 0,
+      cookTitle: STEPS[st.cook].title,
+      showVideo: st.cook === 'samsa',
+      cookSteps: STEPS[st.cook].steps.map((t, i) => ({ n: i + 1, text: t })),
+      samsaTabBg: st.cook === 'samsa' ? YEL : '#F28C1A',
+      pieTabBg: st.cook === 'pie' ? YEL : '#F28C1A',
+      pickSamsa: () => this.setState({ cook: 'samsa' }),
+      pickPie: () => this.setState({ cook: 'pie' })
+    };
+
+    const groups = { g: ['layered', 'short'], z: ['layered', 'short'], p: [] };
+    const fills = { g: ['meat', 'chicken', 'pumpkin'], z: ['meat', 'chicken', 'pumpkin'], p: ['mp', 'cm'] };
+
+    ['g', 'z', 'p'].forEach(pid => {
+      const s = st.sel[pid];
+      groups[pid].forEach(d => {
+        v[pid + '_d_' + d + 'Bg'] = s.dough === d ? YEL : GRY;
+        v[pid + '_pick_' + d] = () => this.pick(pid, 'dough', d);
+      });
+      fills[pid].forEach(f => {
+        v[pid + '_f_' + f + 'Bg'] = s.filling === f ? YEL : GRY;
+        v[pid + '_pickf_' + f] = () => this.pick(pid, 'filling', f);
+      });
+      const ready = this.ready(pid);
+      const key = this.key(pid, s.dough, s.filling);
+      const line = st.cart.find(l => l.key === key);
+      const qty = line ? line.qty : 0;
+      v[pid + '_priceLabel'] = pid === 'p' ? '1200 гр, 1000 сом' : (s.filling ? this.price(pid, s.filling) + ' сом' : 'Цена');
+      v[pid + '_off'] = !ready;
+      v[pid + '_addBg'] = ready ? '#D7263D' : '#DCD6CC';
+      v[pid + '_addColor'] = ready ? '#FFF7E8' : '#8A837A';
+      v[pid + '_add'] = () => this.addToCart(pid);
+      v[pid + '_showAdd'] = qty === 0;
+      v[pid + '_showQty'] = qty > 0;
+      v[pid + '_showMinus'] = qty > 1;
+      v[pid + '_qty'] = qty || 1;
+      v[pid + '_plus'] = () => this.changeQty(key, 1);
+      v[pid + '_minus'] = () => this.changeQty(key, -1);
+      v[pid + '_setQty'] = e => this.setQty(key, e.target.value);
+    });
+
+    v.lines = st.cart.map(l => {
+      const opts = [];
+      groups[l.pid].forEach(d => opts.push({ label: DOUGH[d], bg: l.dough === d ? YEL : GRY, pick: () => this.reLine(l.key, 'dough', d) }));
+      fills[l.pid].filter(f => pumpkinOn || f !== 'pumpkin').forEach(f => opts.push({ label: FILL[f], bg: l.filling === f ? YEL : GRY, pick: () => this.reLine(l.key, 'filling', f) }));
+      const unit = this.price(l.pid, l.filling);
+      return {
+        key: l.key, photo: PHOTOS[l.pid], title: this.lineTitle(l.pid, l.dough, l.filling),
+        opts: opts, qty: l.qty, showMinus: l.qty > 1,
+        priceLabel: (unit * l.qty) + ' сом',
+        plus: () => this.changeQty(l.key, 1),
+        minus: () => this.changeQty(l.key, -1),
+        setQty: e => this.setQty(l.key, e.target.value),
+        remove: () => this.removeLine(l.key)
+      };
+    });
+
+    v.rows = st.cart.map(l => ({
+      name: this.lineTitle(l.pid, l.dough, l.filling) + ' × ' + l.qty,
+      sum: (this.price(l.pid, l.filling) * l.qty) + ' сом'
+    }));
+    const total = st.cart.reduce((a, l) => a + this.price(l.pid, l.filling) * l.qty, 0);
+    v.totalLabel = total + ' сом';
+
+    const val = this.validity();
+    const show = st.touched;
+    v.fName = st.form.name; v.fPhone = st.form.phone; v.fComment = st.form.comment;
+    v.setName = e => this.setField('name', e.target.value);
+    v.setPhone = e => this.setField('phone', e.target.value.replace(/[^\d+\s()-]/g, ''));
+    v.setComment = e => this.setField('comment', e.target.value);
+    v.nameError = show ? val.name : '';
+    v.phoneError = (show || st.form.phone.length > 3) ? val.phone : '';
+    v.deliveryError = show ? val.delivery : '';
+    v.nameBorder = v.nameError ? '#D7263D' : '#1A1512';
+    v.phoneBorder = v.phoneError ? '#D7263D' : '#1A1512';
+    v.pickupBox = st.form.delivery === 'pickup' ? YEL : '#FFF7E8';
+    v.yandexBox = st.form.delivery === 'yandex' ? YEL : '#FFF7E8';
+    v.pickupMark = st.form.delivery === 'pickup' ? '✓' : '';
+    v.yandexMark = st.form.delivery === 'yandex' ? '✓' : '';
+    v.pickPickup = () => this.setField('delivery', 'pickup');
+    v.pickYandex = () => this.setField('delivery', 'yandex');
+    const can = !val.name && !val.phone && !val.delivery && st.cart.length > 0;
+    v.submitOff = false;
+    v.submitBg = can ? '#D7263D' : '#DCD6CC';
+    v.submitColor = can ? '#FFF7E8' : '#8A837A';
+    v.submit = () => this.submit();
+    return v;
+  }
+}
+
+</script>
+</body>
+</html>
