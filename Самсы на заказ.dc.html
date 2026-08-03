@@ -76,7 +76,7 @@
     <section id="order" style="max-width:1320px;margin:0 auto;padding:56px 48px 20px">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:8px">
         <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0">Заказать</h2>
-        <p style="max-width:440px;text-align:right;font-family:'Caveat',cursive;font-weight:700;font-size:26px;line-height:1.35;color:#1A1512;margin:0">Самсы и пироги, приготовленные с любовью из лучших продуктов. Доверьте нам свой выбор и мы обещаем приятно удивить незабываемым вкусом узбекской кухни!</p>
+        <p style="max-width:600px;text-align:right;font-family:'Caveat',cursive;font-weight:700;font-size:26px;line-height:1.35;color:#1A1512;margin:0">Самсы и пироги, приготовленные с любовью из лучших продуктов.<br>Доверьте нам свой выбор и мы обещаем приятно удивить<br>незабываемым вкусом узбекской кухни!</p>
       </div>
       <div style="height:3px;background:#1A1512;margin:18px 0 34px"></div>
 
@@ -97,11 +97,11 @@
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
               <div style="display:flex;gap:8px;align-items:stretch">
-                <button onClick="{{ g_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
-                <button onClick="{{ g_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
+                <button onClick="{{ g_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
+                <button onClick="{{ g_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
                 <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
                 <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-                  <button onClick="{{ g_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
+                  <button onClick="{{ g_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
                   <span style="font-size:11px;color:#8A837A">по сезону</span>
                 </div>
                 </sc-if>
@@ -119,7 +119,7 @@
                   <sc-if value="{{ g_showMinus }}" hint-placeholder-val="{{ false }}">
                     <button onClick="{{ g_minus }}" style="width:36px;height:36px;font-size:18px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
                   </sc-if>
-                  <input type="text" inputMode="numeric" value="{{ g_qty }}" onChange="{{ g_setQty }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <input type="text" inputMode="numeric" value="{{ g_qty }}" onChange="{{ g_setQty }}" onBlur="{{ g_qtyBlur }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
                   <button onClick="{{ g_plus }}" style="width:36px;height:36px;font-size:18px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
                 </div>
               </sc-if>
@@ -146,11 +146,11 @@
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
               <div style="display:flex;gap:8px;align-items:stretch">
-                <button onClick="{{ z_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
-                <button onClick="{{ z_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
+                <button onClick="{{ z_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
+                <button onClick="{{ z_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
                 <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
                 <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-                  <button onClick="{{ z_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
+                  <button onClick="{{ z_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
                   <span style="font-size:11px;color:#8A837A">по сезону</span>
                 </div>
                 </sc-if>
@@ -168,7 +168,7 @@
                   <sc-if value="{{ z_showMinus }}" hint-placeholder-val="{{ false }}">
                     <button onClick="{{ z_minus }}" style="width:36px;height:36px;font-size:18px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
                   </sc-if>
-                  <input type="text" inputMode="numeric" value="{{ z_qty }}" onChange="{{ z_setQty }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <input type="text" inputMode="numeric" value="{{ z_qty }}" onChange="{{ z_setQty }}" onBlur="{{ z_qtyBlur }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
                   <button onClick="{{ z_plus }}" style="width:36px;height:36px;font-size:18px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
                 </div>
               </sc-if>
@@ -189,9 +189,9 @@
           </div>
           <div style="text-align:center">
             <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
-            <div style="display:flex;gap:8px">
-              <button onClick="{{ p_pickf_mp }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ p_f_mpBg }}" style-hover="transform:scale(1.06)">С мясом и картошкой</button>
-              <button onClick="{{ p_pickf_cm }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ p_f_cmBg }}" style-hover="transform:scale(1.06)">С курицей и грибами</button>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button onClick="{{ p_pickf_mp }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:11px 12px;transition:transform .16s ease,background .16s ease;background:{{ p_f_mpBg }}" style-hover="transform:scale(1.03)">С мясом и картошкой</button>
+              <button onClick="{{ p_pickf_cm }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:11px 12px;transition:transform .16s ease,background .16s ease;background:{{ p_f_cmBg }}" style-hover="transform:scale(1.03)">С курицей и грибами</button>
             </div>
           </div>
           <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:12px">
@@ -205,7 +205,7 @@
                   <sc-if value="{{ p_showMinus }}" hint-placeholder-val="{{ false }}">
                     <button onClick="{{ p_minus }}" style="width:36px;height:36px;font-size:18px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
                   </sc-if>
-                  <input type="text" inputMode="numeric" value="{{ p_qty }}" onChange="{{ p_setQty }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <input type="text" inputMode="numeric" value="{{ p_qty }}" onChange="{{ p_setQty }}" onBlur="{{ p_qtyBlur }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
                   <button onClick="{{ p_plus }}" style="width:36px;height:36px;font-size:18px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
                 </div>
               </sc-if>
@@ -339,7 +339,7 @@
                     <sc-if value="{{ line.showMinus }}" hint-placeholder-val="{{ true }}">
                       <button onClick="{{ line.minus }}" style="width:38px;height:38px;font-size:19px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
                     </sc-if>
-                    <input type="text" inputMode="numeric" value="{{ line.qty }}" onChange="{{ line.setQty }}" style="width:54px;height:38px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:21px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
+                    <input type="text" inputMode="numeric" value="{{ line.qty }}" onChange="{{ line.setQty }}" onBlur="{{ line.setQtyBlur }}" style="width:54px;height:38px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:21px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFFDF6;border:3px solid #1A1512;border-radius:10px">
                     <button onClick="{{ line.plus }}" style="width:38px;height:38px;font-size:19px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
                   </div>
                 </div>
@@ -392,7 +392,10 @@
               <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Комментарий к заказу <span style="text-transform:none;letter-spacing:0">— необязательно</span></span>
               <textarea rows="3" value="{{ fComment }}" onChange="{{ setComment }}" placeholder="Время, адрес, пожелания" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px;padding:12px 14px;resize:vertical"></textarea>
             </label>
-            <button onClick="{{ submit }}" disabled="{{ submitOff }}" style="font-family:'Lora',serif;font-size:19px;border:3px solid #1A1512;border-radius:999px;padding:16px 20px;transition:transform .18s ease,background .18s ease;background:{{ submitBg }};color:{{ submitColor }}" style-hover="transform:scale(1.04)">Оформить заказ</button>
+            <button onClick="{{ submit }}" disabled="{{ submitOff }}" style="font-family:'Lora',serif;font-size:19px;border:3px solid #1A1512;border-radius:999px;padding:16px 20px;transition:transform .18s ease,background .18s ease;background:{{ submitBg }};color:{{ submitColor }}" style-hover="transform:scale(1.04)">{{ submitLabel }}</button>
+            <sc-if value="{{ sendError }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:14px;color:#D7263D;margin:0">Не удалось отправить заказ. Попробуйте ещё раз или напишите нам напрямую в WhatsApp.</p>
+            </sc-if>
           </div>
         </div>
       </div>
@@ -459,7 +462,9 @@ class Component extends DCLogic {
     cook: 'samsa',
     form: { name: '', phone: '', delivery: '', comment: '' },
     touched: false,
-    done: false
+    done: false,
+    sending: false,
+    sendError: false
   };
 
   key(pid, dough, filling) { return pid + '|' + (dough || '') + '|' + (filling || ''); }
@@ -501,7 +506,7 @@ class Component extends DCLogic {
     this.setState(s => {
       const sel = Object.assign({}, s.sel);
       const cur = Object.assign({}, sel[pid]);
-      cur.qty = Math.min(999, (cur.qty || 1) + 1);
+      cur.qty = Math.min(999, (cur.qty || 0) + 1);
       sel[pid] = cur;
       return { sel: sel };
     });
@@ -510,7 +515,7 @@ class Component extends DCLogic {
     this.setState(s => {
       const sel = Object.assign({}, s.sel);
       const cur = Object.assign({}, sel[pid]);
-      cur.qty = Math.max(1, (cur.qty || 1) - 1);
+      cur.qty = Math.max(1, (cur.qty || 0) - 1);
       sel[pid] = cur;
       return { sel: sel };
     });
@@ -520,7 +525,16 @@ class Component extends DCLogic {
     this.setState(s => {
       const sel = Object.assign({}, s.sel);
       const cur = Object.assign({}, sel[pid]);
-      cur.qty = digits === '' ? 1 : Math.max(1, Math.min(999, parseInt(digits, 10)));
+      cur.qty = digits === '' ? 0 : Math.min(999, parseInt(digits, 10));
+      sel[pid] = cur;
+      return { sel: sel };
+    });
+  }
+  qtyBlur(pid) {
+    this.setState(s => {
+      const sel = Object.assign({}, s.sel);
+      const cur = Object.assign({}, sel[pid]);
+      if (!cur.qty) cur.qty = 1;
       sel[pid] = cur;
       return { sel: sel };
     });
@@ -561,9 +575,15 @@ class Component extends DCLogic {
       const cart = st.cart.map(l => Object.assign({}, l));
       const i = cart.findIndex(l => l.key === key);
       if (i < 0) return {};
-      if (digits === '') { cart[i].qty = 1; return { cart: cart }; }
-      const n = Math.min(999, parseInt(digits, 10));
-      if (n < 1) cart.splice(i, 1); else cart[i].qty = n;
+      cart[i].qty = digits === '' ? 0 : Math.min(999, parseInt(digits, 10));
+      return { cart: cart };
+    });
+  }
+  setQtyBlur(key) {
+    this.setState(st => {
+      const cart = st.cart.map(l => Object.assign({}, l));
+      const i = cart.findIndex(l => l.key === key);
+      if (i > -1 && !cart[i].qty) cart[i].qty = 1;
       return { cart: cart };
     });
   }
@@ -608,7 +628,29 @@ class Component extends DCLogic {
   submit() {
     const v = this.validity();
     if (v.name || v.phone || v.delivery || !this.state.cart.length) { this.setState({ touched: true }); return; }
-    this.setState({ done: true, cartOpen: false });
+    if (this.state.sending) return;
+    const st = this.state;
+    const deliveryLabel = st.form.delivery === 'pickup' ? 'Самовывоз' : 'Яндекс доставка (оплачивается вами)';
+    const items = st.cart.map(l => this.lineTitle(l.pid, l.dough, l.filling) + ' × ' + l.qty + ' — ' + (this.price(l.pid, l.filling) * l.qty) + ' сом');
+    const total = st.cart.reduce((a, l) => a + this.price(l.pid, l.filling) * l.qty, 0);
+    this.setState({ sending: true, sendError: false });
+    fetch('/api/send-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: st.form.name.trim(),
+        phone: st.form.phone.trim(),
+        delivery: deliveryLabel,
+        comment: st.form.comment.trim(),
+        items: items,
+        total: total
+      })
+    }).then(r => {
+      if (!r.ok) throw new Error('bad status');
+      this.setState({ sending: false, done: true, cartOpen: false });
+    }).catch(() => {
+      this.setState({ sending: false, sendError: true });
+    });
   }
 
   renderVals() {
@@ -664,10 +706,11 @@ class Component extends DCLogic {
       v[pid + '_ready'] = ready;
       v[pid + '_add'] = () => this.addToCart(pid);
       v[pid + '_showMinus'] = (s.qty || 1) > 1;
-      v[pid + '_qty'] = s.qty || 1;
+      v[pid + '_qty'] = s.qty === 0 ? '' : s.qty;
       v[pid + '_plus'] = () => this.qtyPlus(pid);
       v[pid + '_minus'] = () => this.qtyMinus(pid);
       v[pid + '_setQty'] = e => this.qtySet(pid, e.target.value);
+      v[pid + '_qtyBlur'] = () => this.qtyBlur(pid);
     });
 
     v.lines = st.cart.map(l => {
@@ -677,11 +720,12 @@ class Component extends DCLogic {
       const unit = this.price(l.pid, l.filling);
       return {
         key: l.key, photo: PHOTOS[l.pid], title: this.lineTitle(l.pid, l.dough, l.filling),
-        opts: opts, qty: l.qty, showMinus: l.qty > 1,
+        opts: opts, qty: l.qty === 0 ? '' : l.qty, showMinus: l.qty > 1,
         priceLabel: (unit * l.qty) + ' сом',
         plus: () => this.changeQty(l.key, 1),
         minus: () => this.changeQty(l.key, -1),
         setQty: e => this.setQty(l.key, e.target.value),
+        setQtyBlur: () => this.setQtyBlur(l.key),
         remove: () => this.removeLine(l.key)
       };
     });
@@ -710,10 +754,12 @@ class Component extends DCLogic {
     v.yandexMark = st.form.delivery === 'yandex' ? '✓' : '';
     v.pickPickup = () => this.setField('delivery', 'pickup');
     v.pickYandex = () => this.setField('delivery', 'yandex');
-    const can = !val.name && !val.phone && !val.delivery && st.cart.length > 0;
-    v.submitOff = false;
+    const can = !val.name && !val.phone && !val.delivery && st.cart.length > 0 && !st.sending;
+    v.submitOff = st.sending;
     v.submitBg = can ? '#D7263D' : '#DCD6CC';
     v.submitColor = can ? '#FFF7E8' : '#8A837A';
+    v.submitLabel = st.sending ? 'Отправляем…' : 'Оформить заказ';
+    v.sendError = st.sendError;
     v.submit = () => this.submit();
     return v;
   }
