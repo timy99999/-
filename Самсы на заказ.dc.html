@@ -172,22 +172,24 @@
               </div>
             </div>
           </div>
-          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:14px">
-            <div>
-              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ g_priceLabel }}</div>
+          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+              <div>
+                <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ g_priceLabel }}</div>
+              </div>
+              <sc-if value="{{ g_ready }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <sc-if value="{{ g_showMinus }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ g_minus }}" style="width:36px;height:36px;font-size:18px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                  </sc-if>
+                  <input type="text" inputMode="numeric" value="{{ g_qty }}" onChange="{{ g_setQty }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <button onClick="{{ g_plus }}" style="width:36px;height:36px;font-size:18px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+                </div>
+              </sc-if>
             </div>
             <sc-if value="{{ g_ready }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-direction:column;gap:12px">
-                <div style="display:flex;align-items:center;justify-content:center;gap:10px">
-                  <sc-if value="{{ g_showMinus }}" hint-placeholder-val="{{ false }}">
-                    <button onClick="{{ g_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
-                  </sc-if>
-                  <input type="text" inputMode="numeric" value="{{ g_qty }}" onChange="{{ g_setQty }}" style="width:64px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
-                  <button onClick="{{ g_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
-                </div>
-                <button onClick="{{ g_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:12px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.04)">В корзину</button>
-              </div>
+              <button onClick="{{ g_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
             </sc-if>
           </div>
         </article>
@@ -219,22 +221,24 @@
               </div>
             </div>
           </div>
-          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:14px">
-            <div>
-              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ z_priceLabel }}</div>
+          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+              <div>
+                <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ z_priceLabel }}</div>
+              </div>
+              <sc-if value="{{ z_ready }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <sc-if value="{{ z_showMinus }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ z_minus }}" style="width:36px;height:36px;font-size:18px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                  </sc-if>
+                  <input type="text" inputMode="numeric" value="{{ z_qty }}" onChange="{{ z_setQty }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <button onClick="{{ z_plus }}" style="width:36px;height:36px;font-size:18px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+                </div>
+              </sc-if>
             </div>
             <sc-if value="{{ z_ready }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-direction:column;gap:12px">
-                <div style="display:flex;align-items:center;justify-content:center;gap:10px">
-                  <sc-if value="{{ z_showMinus }}" hint-placeholder-val="{{ false }}">
-                    <button onClick="{{ z_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
-                  </sc-if>
-                  <input type="text" inputMode="numeric" value="{{ z_qty }}" onChange="{{ z_setQty }}" style="width:64px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
-                  <button onClick="{{ z_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
-                </div>
-                <button onClick="{{ z_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:12px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.04)">В корзину</button>
-              </div>
+              <button onClick="{{ z_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
             </sc-if>
           </div>
         </article>
@@ -254,22 +258,24 @@
               <button onClick="{{ p_pickf_cm }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ p_f_cmBg }}" style-hover="transform:scale(1.07)">С курицей и грибами</button>
             </div>
           </div>
-          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:14px">
-            <div>
-              <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за пирог</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">1200 гр, 1000 сом</div>
+          <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+              <div>
+                <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за пирог</div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1;white-space:nowrap">1200 гр, 1000 сом</div>
+              </div>
+              <sc-if value="{{ p_ready }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <sc-if value="{{ p_showMinus }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ p_minus }}" style="width:36px;height:36px;font-size:18px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
+                  </sc-if>
+                  <input type="text" inputMode="numeric" value="{{ p_qty }}" onChange="{{ p_setQty }}" style="width:52px;height:36px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
+                  <button onClick="{{ p_plus }}" style="width:36px;height:36px;font-size:18px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
+                </div>
+              </sc-if>
             </div>
             <sc-if value="{{ p_ready }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-direction:column;gap:12px">
-                <div style="display:flex;align-items:center;justify-content:center;gap:10px">
-                  <sc-if value="{{ p_showMinus }}" hint-placeholder-val="{{ false }}">
-                    <button onClick="{{ p_minus }}" style="width:40px;height:40px;font-size:20px;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">−</button>
-                  </sc-if>
-                  <input type="text" inputMode="numeric" value="{{ p_qty }}" onChange="{{ p_setQty }}" style="width:64px;height:40px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-variant-numeric:tabular-nums;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px">
-                  <button onClick="{{ p_plus }}" style="width:40px;height:40px;font-size:20px;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;transition:transform .16s ease" style-hover="transform:scale(1.12)">+</button>
-                </div>
-                <button onClick="{{ p_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:12px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.04)">В корзину</button>
-              </div>
+              <button onClick="{{ p_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
             </sc-if>
           </div>
         </article>
