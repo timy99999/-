@@ -100,10 +100,7 @@
                 <button onClick="{{ g_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
                 <button onClick="{{ g_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
                 <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
-                <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-                  <button onClick="{{ g_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
-                  <span style="font-size:11px;color:#8A837A">по сезону</span>
-                </div>
+                  <button onClick="{{ g_pickf_pumpkin }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
                 </sc-if>
               </div>
             </div>
@@ -113,6 +110,9 @@
               <div>
                 <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
                 <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ g_priceLabel }}</div>
+                <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
+                  <div style="font-size:10px;color:#8A837A">тыква — по сезону</div>
+                </sc-if>
               </div>
               <sc-if value="{{ g_ready }}" hint-placeholder-val="{{ false }}">
                 <div style="display:flex;align-items:center;gap:8px">
@@ -149,10 +149,7 @@
                 <button onClick="{{ z_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
                 <button onClick="{{ z_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
                 <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
-                <div style="flex:1;display:flex;flex-direction:column;gap:3px">
-                  <button onClick="{{ z_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
-                  <span style="font-size:11px;color:#8A837A">по сезону</span>
-                </div>
+                  <button onClick="{{ z_pickf_pumpkin }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:12px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
                 </sc-if>
               </div>
             </div>
@@ -162,6 +159,9 @@
               <div>
                 <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">за штуку</div>
                 <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512;line-height:1.1">{{ z_priceLabel }}</div>
+                <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
+                  <div style="font-size:10px;color:#8A837A">тыква — по сезону</div>
+                </sc-if>
               </div>
               <sc-if value="{{ z_ready }}" hint-placeholder-val="{{ false }}">
                 <div style="display:flex;align-items:center;gap:8px">
@@ -390,7 +390,7 @@
             </div>
             <label style="display:flex;flex-direction:column;gap:6px">
               <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Комментарий к заказу <span style="text-transform:none;letter-spacing:0">— необязательно</span></span>
-              <textarea rows="3" value="{{ fComment }}" onChange="{{ setComment }}" placeholder="Время, адрес, пожелания" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px;padding:12px 14px;resize:vertical"></textarea>
+              <textarea rows="3" value="{{ fComment }}" onChange="{{ setComment }}" placeholder="Пожелания" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px;padding:12px 14px;resize:vertical"></textarea>
             </label>
             <button onClick="{{ submit }}" disabled="{{ submitOff }}" style="font-family:'Lora',serif;font-size:19px;border:3px solid #1A1512;border-radius:999px;padding:16px 20px;transition:transform .18s ease,background .18s ease;background:{{ submitBg }};color:{{ submitColor }}" style-hover="transform:scale(1.04)">{{ submitLabel }}</button>
             <sc-if value="{{ sendError }}" hint-placeholder-val="{{ false }}">
