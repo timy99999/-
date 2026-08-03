@@ -16,7 +16,7 @@
 <script src="./image-slot.js"></script>
 <script type="module" src="./hero-oven.js"></script>
 <style>
-  html, body { background: #FFF7E8; }
+  html, body { background: #F4BE69; }
   *, *::before, *::after, a, button, input, textarea, select {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'><rect x='16' y='17' width='17' height='4.2' rx='2.1' fill='%233b2a1a' transform='rotate(-18 16 17)'/><ellipse cx='13' cy='13' rx='12' ry='11' fill='%23241c14'/><ellipse cx='13' cy='12.2' rx='9' ry='8' fill='%233f2f20'/><ellipse cx='10' cy='9.5' rx='3.2' ry='2.1' fill='%23604a37'/></svg>") 13 13, auto;
   }
@@ -37,7 +37,7 @@
 </style>
 </helmet>
 
-<div style="min-height:100vh;width:100%;background:#FFF7E8;font-family:'Lora',Georgia,serif;color:#1A1512">
+<div style="min-height:100vh;width:100%;background:#F4BE69;font-family:'Lora',Georgia,serif;color:#1A1512">
 
   <div style="position:sticky;top:0;z-index:70;display:flex;justify-content:center;padding:14px 16px;pointer-events:none">
     <nav style="pointer-events:auto;display:flex;align-items:center;gap:4px;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:7px 9px;box-shadow:0 7px 0 rgba(26,21,18,.16)">
@@ -74,35 +74,34 @@
     </section>
 
     <section id="order" style="max-width:1320px;margin:0 auto;padding:56px 48px 20px">
-      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:8px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:8px">
         <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0">Заказать</h2>
-        <p style="max-width:440px;font-family:'Lora',serif;font-size:15px;line-height:1.5;color:#1A1512;margin:0">Самсы и пироги, приготовленные с любовью из лучших продуктов. Доверьте нам свой выбор и мы обещаем приятно удивить незабываемым вкусом узбекской кухни!</p>
+        <p style="max-width:440px;text-align:right;font-family:'Caveat',cursive;font-weight:700;font-size:26px;line-height:1.35;color:#1A1512;margin:0">Самсы и пироги, приготовленные с любовью из лучших продуктов. Доверьте нам свой выбор и мы обещаем приятно удивить незабываемым вкусом узбекской кухни!</p>
       </div>
       <div style="height:3px;background:#1A1512;margin:18px 0 34px"></div>
 
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch">
 
-        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
-          <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;aspect-ratio:4/3">
-            <img src="uploads/готовые самсы.jpg" alt="Готовые самсы" style="width:100%;height:100%;object-fit:cover">
-          </div>
+        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
+          <img src="uploads/готовые самсы.jpg" alt="Готовые самсы" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
           <h3 style="font-family:'Lora',serif;font-size:25px;font-weight:600;color:#1A1512;margin:0;text-align:center">Готовые самсы</h3>
           <div style="display:flex;flex-direction:column;gap:12px;text-align:center">
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Тесто</div>
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
-                <button onClick="{{ g_pick_layered }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_d_layeredBg }}" style-hover="transform:scale(1.07)">Слоёные</button>
-                <button onClick="{{ g_pick_short }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_d_shortBg }}" style-hover="transform:scale(1.07)">Песочные</button>
+              <div style="display:flex;gap:8px">
+                <button onClick="{{ g_pick_layered }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_d_layeredBg }}" style-hover="transform:scale(1.06)">Слоёные</button>
+                <button onClick="{{ g_pick_short }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_d_shortBg }}" style-hover="transform:scale(1.06)">Песочные</button>
               </div>
             </div>
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:flex-start">
-                <button onClick="{{ g_pickf_meat }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_f_meatBg }}" style-hover="transform:scale(1.07)">С мясом</button>
-                <button onClick="{{ g_pickf_chicken }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_f_chickenBg }}" style-hover="transform:scale(1.07)">С курицей</button>
+              <div style="display:flex;gap:8px;align-items:stretch">
+                <button onClick="{{ g_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
+                <button onClick="{{ g_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
                 <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
-                <div style="display:flex;flex-direction:column;gap:3px">
-                  <button onClick="{{ g_pickf_pumpkin }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ g_f_pumpkinBg }}" style-hover="transform:scale(1.07)">С тыквой и мясом</button>
+                <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <button onClick="{{ g_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ g_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
                   <span style="font-size:11px;color:#8A837A">по сезону</span>
                 </div>
                 </sc-if>
@@ -129,29 +128,29 @@
               <button onClick="{{ g_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
             </sc-if>
           </div>
+          </div>
         </article>
 
-        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
-          <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;aspect-ratio:4/3">
-            <img src="uploads/Замороженные самсы.jpeg" alt="Замороженные самсы" style="width:100%;height:100%;object-fit:cover">
-          </div>
+        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
+          <img src="uploads/Замороженные самсы.jpeg" alt="Замороженные самсы" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
           <h3 style="font-family:'Lora',serif;font-size:25px;font-weight:600;color:#1A1512;margin:0;text-align:center">Замороженные самсы</h3>
           <div style="display:flex;flex-direction:column;gap:12px;text-align:center">
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Тесто</div>
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
-                <button onClick="{{ z_pick_layered }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_d_layeredBg }}" style-hover="transform:scale(1.07)">Слоёные</button>
-                <button onClick="{{ z_pick_short }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_d_shortBg }}" style-hover="transform:scale(1.07)">Песочные</button>
+              <div style="display:flex;gap:8px">
+                <button onClick="{{ z_pick_layered }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_d_layeredBg }}" style-hover="transform:scale(1.06)">Слоёные</button>
+                <button onClick="{{ z_pick_short }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_d_shortBg }}" style-hover="transform:scale(1.06)">Песочные</button>
               </div>
             </div>
             <div>
               <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
-              <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;align-items:flex-start">
-                <button onClick="{{ z_pickf_meat }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_f_meatBg }}" style-hover="transform:scale(1.07)">С мясом</button>
-                <button onClick="{{ z_pickf_chicken }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_f_chickenBg }}" style-hover="transform:scale(1.07)">С курицей</button>
+              <div style="display:flex;gap:8px;align-items:stretch">
+                <button onClick="{{ z_pickf_meat }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_meatBg }}" style-hover="transform:scale(1.06)">С мясом</button>
+                <button onClick="{{ z_pickf_chicken }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_chickenBg }}" style-hover="transform:scale(1.06)">С курицей</button>
                 <sc-if value="{{ pumpkinOn }}" hint-placeholder-val="{{ true }}">
-                <div style="display:flex;flex-direction:column;gap:3px">
-                  <button onClick="{{ z_pickf_pumpkin }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ z_f_pumpkinBg }}" style-hover="transform:scale(1.07)">С тыквой и мясом</button>
+                <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+                  <button onClick="{{ z_pickf_pumpkin }}" style="width:100%;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ z_f_pumpkinBg }}" style-hover="transform:scale(1.06)">С тыквой и мясом</button>
                   <span style="font-size:11px;color:#8A837A">по сезону</span>
                 </div>
                 </sc-if>
@@ -178,21 +177,21 @@
               <button onClick="{{ z_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
             </sc-if>
           </div>
+          </div>
         </article>
 
-        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:16px;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
-          <div style="border:3px solid #1A1512;border-radius:10px;overflow:hidden;aspect-ratio:4/3">
-            <img src="uploads/пирог.jpg" alt="Пирог" style="width:100%;height:100%;object-fit:cover">
-          </div>
+        <article style="background:#FFFDF6;border:3px solid #1A1512;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:9px 9px 0 rgba(26,21,18,.13)">
+          <img src="uploads/пирог.jpg" alt="Пирог" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block">
+          <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
           <div style="text-align:center">
             <h3 style="font-family:'Lora',serif;font-size:25px;font-weight:600;color:#1A1512;margin:0">Пироги</h3>
             <span style="font-size:11px;color:#8A837A">замороженные</span>
           </div>
           <div style="text-align:center">
             <div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A;margin-bottom:8px">Начинка</div>
-            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
-              <button onClick="{{ p_pickf_mp }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ p_f_mpBg }}" style-hover="transform:scale(1.07)">С мясом и картошкой</button>
-              <button onClick="{{ p_pickf_cm }}" style="font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 16px;transition:transform .16s ease,background .16s ease;background:{{ p_f_cmBg }}" style-hover="transform:scale(1.07)">С курицей и грибами</button>
+            <div style="display:flex;gap:8px">
+              <button onClick="{{ p_pickf_mp }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ p_f_mpBg }}" style-hover="transform:scale(1.06)">С мясом и картошкой</button>
+              <button onClick="{{ p_pickf_cm }}" style="flex:1;font-family:'Lora',serif;font-size:15px;color:#1A1512;border:2px solid #1A1512;border-radius:999px;padding:9px 12px;transition:transform .16s ease,background .16s ease;background:{{ p_f_cmBg }}" style-hover="transform:scale(1.06)">С курицей и грибами</button>
             </div>
           </div>
           <div style="margin-top:auto;padding-top:6px;display:flex;flex-direction:column;gap:12px">
@@ -214,6 +213,7 @@
             <sc-if value="{{ p_ready }}" hint-placeholder-val="{{ false }}">
               <button onClick="{{ p_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
             </sc-if>
+          </div>
           </div>
         </article>
       </div>
@@ -302,7 +302,7 @@
   </footer>
 
   <sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
-  <div data-screen-label="Корзина" style="position:fixed;inset:0;z-index:90;background:#FFF7E8;overflow:auto;animation:fadeIn .25s both">
+  <div data-screen-label="Корзина" style="position:fixed;inset:0;z-index:90;background:#F4BE69;overflow:auto;animation:fadeIn .25s both">
     <div style="max-width:1320px;margin:0 auto;padding:34px 48px 70px">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
         <h2 style="font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:600;margin:0">Корзина</h2>
