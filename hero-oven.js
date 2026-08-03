@@ -1,8 +1,6 @@
 import * as THREE from './three.module.js';
-import { mergeVertices } from './three-BufferGeometryUtils.js';
 
 const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-const easeOutBack = t => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
 const clamp01 = t => Math.max(0, Math.min(1, t));
 const lerp = THREE.MathUtils.lerp;
 
@@ -19,39 +17,6 @@ function roundedRectShape(w, h, r, originBottom) {
   shape.lineTo(x + r, y);
   shape.quadraticCurveTo(x, y, x, y + r);
   return shape;
-}
-
-function samsaShape() {
-  const s = new THREE.Shape();
-  s.moveTo(0, 0.6);
-  s.quadraticCurveTo(0.56, 0.18, 0.62, -0.36);
-  s.quadraticCurveTo(0.64, -0.52, 0.46, -0.52);
-  s.lineTo(-0.46, -0.52);
-  s.quadraticCurveTo(-0.64, -0.52, -0.62, -0.36);
-  s.quadraticCurveTo(-0.56, 0.18, 0, 0.6);
-  return s;
-}
-
-function makeSpeckleTexture() {
-  const c = document.createElement('canvas');
-  c.width = c.height = 128;
-  const ctx = c.getContext('2d');
-  const g = ctx.createRadialGradient(64, 40, 6, 64, 70, 110);
-  g.addColorStop(0, '#F2B15C');
-  g.addColorStop(0.55, '#D98A3D');
-  g.addColorStop(1, '#B5661F');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, 128, 128);
-  ctx.fillStyle = 'rgba(60,32,10,.55)';
-  for (let i = 0; i < 70; i++) {
-    const x = Math.random() * 128, y = Math.random() * 128;
-    ctx.beginPath();
-    ctx.ellipse(x, y, 1.7, 0.9, Math.random() * Math.PI, 0, Math.PI * 2);
-    ctx.fill();
-  }
-  const tex = new THREE.CanvasTexture(c);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  return tex;
 }
 
 function makeGlowTexture() {
@@ -96,27 +61,13 @@ function makeShadowTexture() {
 const TL = {
   ovenFly: { start: 0.05, dur: 1.4 },
   doorOpen: { start: 1.55, dur: 0.6 },
-  trayOut: { start: 1.85, dur: 0.7 },
-  steamStart: 2.35,
-  fly: [
-    { start: 2.7, dur: 1.1 },
-    { start: 2.95, dur: 1.1 },
-    { start: 3.2, dur: 1.1 }
-  ],
-  ovenExit: { start: 4.55, dur: 1.25 }
+  steamStart: 1.7,
+  ovenExit: { start: 3.6, dur: 1.25 }
 };
-
-const FLY_TARGETS = [
-  { pos: new THREE.Vector3(-3.85, 0.85, 0.75), rotY: -0.3, rotX: -0.06 },
-  { pos: new THREE.Vector3(-3.35, 1.15, 0.35), rotY: 0.12, rotX: -0.1 },
-  { pos: new THREE.Vector3(-3.0, 0.72, 0.95), rotY: 0.34, rotX: -0.04 }
-];
 
 class HeroOven3D extends HTMLElement {
   connectedCallback() {
     this.startTime = null;
-    this.detached = [false, false, false];
-    this.flyers = [null, null, null];
 
     const canvas = document.createElement('canvas');
     canvas.style.cssText = 'width:100%;height:100%;display:block';
@@ -169,10 +120,8 @@ class HeroOven3D extends HTMLElement {
     oven.add(body);
 
     const knobColors = [0xF28C1A, 0xFFC93C, 0xD7263D];
-    const knobMats = [];
     knobColors.forEach((c, i) => {
       const m = new THREE.MeshStandardMaterial({ color: c, roughness: 0.35, metalness: 0.25 });
-      knobMats.push(m);
       const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.07, 16), m);
       knob.rotation.x = Math.PI / 2;
       knob.position.set(0.78 - i * 0.32, 1.3, 0.78);
@@ -209,61 +158,17 @@ class HeroOven3D extends HTMLElement {
     handle.position.set(0, 1.4, 0.12);
     doorPivot.add(handle);
 
-    // ---- tray ----
-    const trayGroup = new THREE.Group();
-    trayGroup.position.set(0, -0.62, 0.35);
-    oven.add(trayGroup);
-    this.trayGroup = trayGroup;
-    this.trayInsideZ = 0.35;
-    this.trayOutZ = 1.95;
-    this.trayInsideY = -0.62;
-    this.trayOutY = -0.78;
-
-    const trayGeo = new THREE.ExtrudeGeometry(roundedRectShape(2.1, 0.9, 0.12), { depth: 0.14, bevelEnabled: true, bevelThickness: 0.02, bevelSize: 0.02, bevelSegments: 2 });
-    trayGeo.center();
-    trayGeo.rotateX(-Math.PI / 2);
-    const trayMat = new THREE.MeshStandardMaterial({ color: 0x2b2118, roughness: 0.55, metalness: 0.2 });
-    const trayBase = new THREE.Mesh(trayGeo, trayMat);
-    trayGroup.add(trayBase);
-
-    let samsaGeo = new THREE.ExtrudeGeometry(samsaShape(), { depth: 0.34, bevelEnabled: true, bevelThickness: 0.035, bevelSize: 0.035, bevelSegments: 5, curveSegments: 24 });
-    samsaGeo = mergeVertices(samsaGeo, 1e-4);
-    samsaGeo.computeVertexNormals();
-    samsaGeo.center();
-    samsaGeo.scale(0.62, 0.62, 0.62);
-    this.samsaGeo = samsaGeo;
-    const samsaMat = new THREE.MeshPhysicalMaterial({
-      map: makeSpeckleTexture(), roughness: 0.62, metalness: 0.02,
-      clearcoat: 0.12, clearcoatRoughness: 0.65, sheen: 0.15, sheenColor: new THREE.Color('#FFD37A'),
-      flatShading: false
-    });
-    this.samsaMat = samsaMat;
-
-    const cols = [-0.62, 0, 0.62];
-    const rowsZ = [-0.18, 0.17];
-    const trayItems = [];
-    rowsZ.forEach((z, ri) => {
-      cols.forEach((x, ci) => {
-        const m = new THREE.Mesh(samsaGeo, samsaMat);
-        m.rotation.x = -Math.PI / 2;
-        m.rotation.z = (Math.random() - 0.5) * 0.5;
-        m.position.set(x, 0.09, z);
-        trayGroup.add(m);
-        trayItems.push(m);
-      });
-    });
-    this.flySource = [trayItems[0], trayItems[2], trayItems[4]];
-
+    // ---- steam, rising from the oven opening ----
     const steamTex = makeSteamTexture();
     this.steamParticles = [];
     for (let i = 0; i < 6; i++) {
       const mat = new THREE.SpriteMaterial({ map: steamTex, transparent: true, opacity: 0, depthWrite: false });
       const sprite = new THREE.Sprite(mat);
       sprite.scale.setScalar(0.35);
-      const bx = (i % 3 - 1) * 0.62 + (Math.random() - 0.5) * 0.15;
-      const bz = (Math.random() - 0.5) * 0.3;
-      sprite.position.set(bx, 0.12, bz);
-      trayGroup.add(sprite);
+      const bx = (i % 3 - 1) * 0.5 + (Math.random() - 0.5) * 0.15;
+      const bz = 0.7 + Math.random() * 0.2;
+      sprite.position.set(bx, -0.3, bz);
+      oven.add(sprite);
       this.steamParticles.push({ sprite, baseX: bx, baseZ: bz, phase: Math.random(), speed: 0.28 + Math.random() * 0.12 });
     }
 
@@ -292,26 +197,15 @@ class HeroOven3D extends HTMLElement {
     this.renderer.setSize(w, h, false);
   }
 
-  attachFlyer(i) {
-    const src = this.flySource[i];
-    const worldPos = new THREE.Vector3();
-    src.getWorldPosition(worldPos);
-    this.trayGroup.remove(src);
-    this.scene.add(src);
-    src.position.copy(worldPos);
-    src.rotation.set(-Math.PI / 2, 0, src.rotation.z);
-    src.scale.setScalar(0.82);
-    this.flyers[i] = { mesh: src, from: worldPos.clone(), fromRotZ: src.rotation.z };
-  }
-
   frame(now) {
     if (this.startTime === null) this.startTime = now;
     const t = (now - this.startTime) / 1000;
     window.__heroT = t;
 
-    const ovenT = easeOutCubic(clamp01((t - TL.ovenFly.start) / TL.ovenFly.dur));
-    this.oven.position.x = lerp(this.ovenStartX, this.ovenRestX, ovenT) ;
-    this.oven.position.y = lerp(0.35, this.ovenRestY, ovenT) + Math.sin(clamp01((t - TL.ovenFly.start) / TL.ovenFly.dur) * Math.PI) * 0.4;
+    const ovenRawT = clamp01((t - TL.ovenFly.start) / TL.ovenFly.dur);
+    const ovenT = easeOutCubic(ovenRawT);
+    this.oven.position.x = lerp(this.ovenStartX, this.ovenRestX, ovenT);
+    this.oven.position.y = lerp(0.35, this.ovenRestY, ovenT) + Math.sin(ovenRawT * Math.PI) * 0.4;
     this.oven.rotation.y = lerp(this.ovenStartRotY, this.ovenRestRotY, ovenT);
     if (ovenT >= 1) {
       const bt = clamp01((t - (TL.ovenFly.start + TL.ovenFly.dur)) / 0.4);
@@ -339,43 +233,13 @@ class HeroOven3D extends HTMLElement {
     const doorT = easeOutCubic(clamp01((t - TL.doorOpen.start) / TL.doorOpen.dur));
     this.doorPivot.rotation.x = lerp(0, 1.25, doorT);
 
-    const trayT = easeOutCubic(clamp01((t - TL.trayOut.start) / TL.trayOut.dur));
-    this.trayGroup.position.z = lerp(this.trayInsideZ, this.trayOutZ, trayT);
-    this.trayGroup.position.y = lerp(this.trayInsideY, this.trayOutY, trayT);
-
-    const steamOn = t > TL.steamStart;
+    const steamOn = t > TL.steamStart && exitRawT < 1;
     this.steamParticles.forEach(p => {
       if (!steamOn) { p.sprite.material.opacity = 0; return; }
       const ct = ((t - TL.steamStart) * p.speed + p.phase) % 1;
-      p.sprite.position.set(p.baseX, 0.1 + ct * 1.3, p.baseZ + Math.sin(ct * 8 + p.phase * 6) * 0.06);
-      p.sprite.material.opacity = Math.sin(ct * Math.PI) * 0.85;
+      p.sprite.position.set(p.baseX, -0.35 + ct * 1.3, p.baseZ + Math.sin(ct * 8 + p.phase * 6) * 0.06);
+      p.sprite.material.opacity = Math.sin(ct * Math.PI) * 0.85 * (1 - clamp01(exitRawT * 2));
       p.sprite.scale.setScalar(0.5 + ct * 0.95);
-    });
-
-    TL.fly.forEach((stage, i) => {
-      if (t < stage.start) return;
-      if (!this.detached[i]) { this.detached[i] = true; this.attachFlyer(i); }
-      const f = this.flyers[i];
-      if (!f) return;
-      const ft = clamp01((t - stage.start) / stage.dur);
-      if (ft < 1) {
-        const e = easeOutCubic(ft);
-        const target = FLY_TARGETS[i];
-        f.mesh.position.x = lerp(f.from.x, target.pos.x, e);
-        f.mesh.position.z = lerp(f.from.z, target.pos.z, e);
-        f.mesh.position.y = lerp(f.from.y, target.pos.y, e) + Math.sin(ft * Math.PI) * 0.4;
-        f.mesh.rotation.x = lerp(-Math.PI / 2, target.rotX, e);
-        f.mesh.rotation.y = lerp(0, target.rotY + Math.sin(ft * 10) * 0.3 * (1 - ft), e);
-        f.mesh.rotation.z = lerp(f.fromRotZ, 0, e);
-      } else {
-        const target = FLY_TARGETS[i];
-        f.mesh.position.x = target.pos.x;
-        f.mesh.position.z = target.pos.z;
-        f.mesh.position.y = target.pos.y + Math.sin(t * 1.6 + i * 1.7) * 0.09;
-        f.mesh.rotation.x = target.rotX;
-        f.mesh.rotation.y = target.rotY + Math.sin(t * 0.9 + i) * 0.06;
-        f.mesh.rotation.z = Math.sin(t * 1.1 + i) * 0.07;
-      }
     });
 
     this.glow.material.opacity = 0.6 + Math.sin(t * 2.2) * 0.15;
