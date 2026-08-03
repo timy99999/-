@@ -62,7 +62,7 @@ const TL = {
   ovenFly: { start: 0.05, dur: 1.4 },
   doorOpen: { start: 1.55, dur: 0.6 },
   steamStart: 1.7,
-  ovenExit: { start: 3.6, dur: 1.25 }
+  ovenExit: { start: 2.95, dur: 1.25 }
 };
 
 class HeroOven3D extends HTMLElement {
