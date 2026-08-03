@@ -18,8 +18,24 @@
 <style>
   html, body { background: #F4BE69; }
   *, *::before, *::after, a, button, input, textarea, select {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'><rect x='16' y='17' width='17' height='4.2' rx='2.1' fill='%233b2a1a' transform='rotate(-18 16 17)'/><ellipse cx='13' cy='13' rx='12' ry='11' fill='%23241c14'/><ellipse cx='13' cy='12.2' rx='9' ry='8' fill='%233f2f20'/><ellipse cx='10' cy='9.5' rx='3.2' ry='2.1' fill='%23604a37'/></svg>") 13 13, auto;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='42' height='34' viewBox='0 0 42 34'><rect x='22' y='12.5' width='19' height='5' rx='2.5' fill='%233b2a1a'/><rect x='22' y='12.5' width='19' height='5' rx='2.5' fill='none' stroke='%23120e0a' stroke-width='.8'/><circle cx='14' cy='15' r='12.5' fill='%23120e0a'/><circle cx='14' cy='15' r='11' fill='%23241c14'/><circle cx='14' cy='14.4' r='8.4' fill='%233a2b1c'/><circle cx='14' cy='14' r='6.8' fill='%23543f28'/><ellipse cx='10.3' cy='10.6' rx='2.6' ry='1.6' fill='%23806339' opacity='.55'/></svg>") 14 15, auto;
   }
+  .uz-border {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 26px;
+    z-index: 1;
+    pointer-events: none;
+    background-repeat: repeat-y;
+    background-position: top center;
+    opacity: .85;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='96' viewBox='0 0 32 96'><line x1='16' y1='0' x2='16' y2='96' stroke='%23E8720C' stroke-width='2.5'/><path d='M16 6 L24 16 L16 26 L8 16 Z' fill='%23E8720C'/><circle cx='16' cy='48' r='4.5' fill='%23E8720C'/><path d='M16 70 L24 80 L16 90 L8 80 Z' fill='%23E8720C'/></svg>");
+  }
+  .uz-border-left { left: 0; }
+  .uz-border-right { right: 0; transform: scaleX(-1); }
+  @media (min-width: 1550px) { .uz-border { display: block; } }
   a { color: #E8720C; text-decoration: none; }
   a:hover { color: #D7263D; }
   ::selection { background: #FFC93C; }
@@ -38,6 +54,9 @@
 </helmet>
 
 <div style="min-height:100vh;width:100%;background:#F4BE69;font-family:'Lora',Georgia,serif;color:#1A1512">
+
+  <div class="uz-border uz-border-left"></div>
+  <div class="uz-border uz-border-right"></div>
 
   <div style="position:sticky;top:0;z-index:70;display:flex;justify-content:center;padding:14px 16px;pointer-events:none">
     <nav style="pointer-events:auto;display:flex;align-items:center;gap:4px;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:7px 9px;box-shadow:0 7px 0 rgba(26,21,18,.16)">
@@ -273,8 +292,7 @@
 
   <sc-if value="{{ isReviews }}" hint-placeholder-val="{{ false }}">
   <main data-screen-label="Отзывы" style="max-width:1320px;margin:0 auto;padding:40px 48px 80px">
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0 0 22px;text-align:center">Отзывы</h2>
-    <p style="max-width:760px;margin:0 auto 44px;text-align:center;font-family:'Caveat',cursive;font-weight:500;font-size:32px;line-height:1.45;color:#1A1512;text-wrap:pretty">Больше всего меня вдохновляет в своём деле отзывы моих покупателей. В особенности постоянных заказчиков, которые с радостью возвращаются и просят повторить.</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:600;color:#1A1512;margin:0 0 36px;text-align:center">Отзывы</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
       <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px;overflow:hidden;background:#FFFDF6"><img src="uploads/отзыв-1.jpeg" alt="Отзыв покупателя" style="width:100%;height:100%;object-fit:contain"></div>
       <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px;overflow:hidden;background:#FFFDF6"><img src="uploads/отзыв-2.jpeg" alt="Отзыв покупателя" style="width:100%;height:100%;object-fit:contain"></div>
@@ -282,6 +300,7 @@
       <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px;overflow:hidden;background:#FFFDF6"><img src="uploads/отзыв-4.jpeg" alt="Отзыв покупателя" style="width:100%;height:100%;object-fit:contain"></div>
       <div style="border:6px solid #FFFDF6;outline:3px solid #1A1512;border-radius:6px;height:420px;overflow:hidden;background:#FFFDF6"><img src="uploads/отзыв-5.jpeg" alt="Отзыв покупателя" style="width:100%;height:100%;object-fit:contain"></div>
     </div>
+    <p style="max-width:760px;margin:44px auto 0;text-align:center;font-family:'Caveat',cursive;font-weight:500;font-size:32px;line-height:1.45;color:#1A1512;text-wrap:pretty">Больше всего меня вдохновляет в своём деле отзывы моих покупателей. В особенности постоянных заказчиков, которые с радостью возвращаются и просят повторить.</p>
   </main>
   </sc-if>
 
