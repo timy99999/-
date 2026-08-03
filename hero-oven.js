@@ -99,16 +99,17 @@ const TL = {
   trayOut: { start: 1.85, dur: 0.7 },
   steamStart: 2.35,
   fly: [
-    { start: 2.7, dur: 1.15 },
-    { start: 2.98, dur: 1.15 },
-    { start: 3.26, dur: 1.15 }
-  ]
+    { start: 2.7, dur: 1.1 },
+    { start: 2.95, dur: 1.1 },
+    { start: 3.2, dur: 1.1 }
+  ],
+  ovenExit: { start: 4.55, dur: 1.25 }
 };
 
 const FLY_TARGETS = [
-  { pos: new THREE.Vector3(-1.05, 0.32, 1.85), rotY: -0.35, rotX: -0.08 },
-  { pos: new THREE.Vector3(0.05, 0.66, 2.1), rotY: 0.08, rotX: -0.04 },
-  { pos: new THREE.Vector3(1.1, 0.3, 1.85), rotY: 0.35, rotX: -0.1 }
+  { pos: new THREE.Vector3(-3.85, 0.85, 0.75), rotY: -0.3, rotX: -0.06 },
+  { pos: new THREE.Vector3(-3.35, 1.15, 0.35), rotY: 0.12, rotX: -0.1 },
+  { pos: new THREE.Vector3(-3.0, 0.72, 0.95), rotY: 0.34, rotX: -0.04 }
 ];
 
 class HeroOven3D extends HTMLElement {
@@ -132,8 +133,8 @@ class HeroOven3D extends HTMLElement {
     this.scene = scene;
 
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    camera.position.set(0, 0.85, 7.6);
-    camera.lookAt(0, 0.3, 0);
+    camera.position.set(0, 0.7, 9.2);
+    camera.lookAt(0.2, 0.45, 0);
     this.camera = camera;
 
     scene.add(new THREE.AmbientLight(0xfff1d8, 0.6));
@@ -266,11 +267,12 @@ class HeroOven3D extends HTMLElement {
       this.steamParticles.push({ sprite, baseX: bx, baseZ: bz, phase: Math.random(), speed: 0.28 + Math.random() * 0.12 });
     }
 
-    this.ovenStartX = 9.5;
-    this.ovenRestX = 0.05;
+    this.ovenStartX = 12.5;
+    this.ovenRestX = 2.1;
     this.ovenRestY = -0.05;
     this.ovenStartRotY = -Math.PI * 2.35;
     this.ovenRestRotY = -0.3;
+    this.ovenExitRotY = this.ovenRestRotY + Math.PI * 2.1;
     oven.position.set(this.ovenStartX, 0.35, -1.1);
     oven.rotation.y = this.ovenStartRotY;
 
@@ -321,6 +323,18 @@ class HeroOven3D extends HTMLElement {
     }
     this.shadow.position.x = this.oven.position.x;
     this.shadow.scale.setScalar(0.85 + ovenT * 0.3);
+
+    const exitRawT = clamp01((t - TL.ovenExit.start) / TL.ovenExit.dur);
+    if (exitRawT > 0) {
+      const exitT = easeOutCubic(exitRawT);
+      this.oven.position.x = lerp(this.ovenRestX, this.ovenStartX, exitT);
+      this.oven.position.y = this.ovenRestY + Math.sin(exitRawT * Math.PI) * 0.35;
+      this.oven.rotation.y = lerp(this.ovenRestRotY, this.ovenExitRotY, exitT);
+      this.oven.scale.set(1, 1, 1);
+      this.shadow.position.x = this.oven.position.x;
+      this.shadow.material.opacity = 0.9 * (1 - exitT);
+      this.shadow.scale.setScalar(1.15 - exitT * 0.3);
+    }
 
     const doorT = easeOutCubic(clamp01((t - TL.doorOpen.start) / TL.doorOpen.dur));
     this.doorPivot.rotation.x = lerp(0, 1.25, doorT);

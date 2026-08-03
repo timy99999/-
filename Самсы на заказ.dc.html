@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="_ds/classical-37a45c4d-6cc7-44df-8a2b-2a4a5065b5ed/styles.css">
 <script src="_ds/classical-37a45c4d-6cc7-44df-8a2b-2a4a5065b5ed/_ds_bundle.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Caveat:wght@500;700&display=swap">
 <link rel="modulepreload" href="./three.module.js">
 <link rel="modulepreload" href="./three-BufferGeometryUtils.js">
 <link rel="modulepreload" href="./hero-oven.js">
@@ -25,30 +25,12 @@
   a { color: #E8720C; text-decoration: none; }
   a:hover { color: #D7263D; }
   ::selection { background: #FFC93C; }
-  @keyframes samWrite { from { clip-path: inset(0 103% -20% 0); } to { clip-path: inset(0 -8% -20% 0); } }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes pop3d {
-    0% { opacity: 0; transform: perspective(1000px) translate3d(-90px, 40px, -700px) rotateY(-52deg) rotateX(16deg); filter: blur(8px); }
-    70% { opacity: 1; filter: blur(0); }
-    100% { opacity: 1; transform: perspective(1000px) translate3d(0,0,0) rotateY(-11deg) rotateX(3deg); filter: blur(0); }
+  @keyframes samPop {
+    0% { opacity: 0; transform: translateY(30px) scale(.9); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
   }
-  @keyframes trayOut {
-    0% { transform: translate(-6px, 6px) rotateX(26deg) scale(.86); }
-    55% { transform: translate(232px, 44px) rotateX(20deg) scale(1.02); }
-    75% { transform: translate(268px, 58px) rotateX(17deg) scale(1.05); }
-    100% { transform: translate(258px, 54px) rotateX(18deg) scale(1.04); }
-  }
-  @keyframes trayShadow { 0% { opacity: 0; } 60% { opacity: .22; } 100% { opacity: .18; } }
-  @keyframes steam {
-    0% { opacity: 0; transform: translateY(6px) scale(.6); }
-    25% { opacity: .55; }
-    100% { opacity: 0; transform: translateY(-92px) scale(1.5); }
-  }
-  @keyframes ovenGlow { 0%, 100% { opacity: .82; } 50% { opacity: 1; } }
-  @keyframes doorOpen { from { transform: perspective(700px) rotateX(4deg); } to { transform: perspective(700px) rotateX(64deg); } }
-  @keyframes floaty { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-14px) rotate(2deg); } }
-  @keyframes plateIn { from { opacity: 0; transform: scale(.82) rotate(-8deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
 </style>
 </helmet>
 
@@ -71,25 +53,22 @@
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
   <main data-screen-label="Главная">
 
-    <section style="position:relative;max-width:1440px;min-width:1240px;margin:0 auto;padding:0 48px 40px;display:grid;grid-template-columns:44% 56%;min-height:900px;overflow:hidden">
+    <section style="position:relative;max-width:1440px;min-width:1240px;margin:0 auto;padding:18px 0 0;height:660px;overflow:hidden">
 
-      <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:44px;padding-bottom:56px">
-        <div style="display:flex;flex-direction:column;gap:14px;perspective:1000px">
-          <button onClick="{{ goOrder }}" style="align-self:flex-start;text-align:left;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#1A1512;background:#F28C1A;border:3px solid #1A1512;border-radius:6px;padding:16px 30px 16px 22px;white-space:nowrap;box-shadow:10px 10px 0 #1A1512;animation:pop3d 1.1s .25s cubic-bezier(.2,.8,.25,1) both;transition:transform .16s ease" style-hover="transform:scale(1.05) rotateY(-11deg) rotateX(3deg)">Узбекские самсы</button>
-          <button onClick="{{ goOrder }}" style="align-self:flex-start;text-align:left;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#1A1512;background:#FFC93C;border:3px solid #1A1512;border-radius:6px;padding:16px 30px 16px 22px;white-space:nowrap;box-shadow:10px 10px 0 #1A1512;animation:pop3d 1.1s .5s cubic-bezier(.2,.8,.25,1) both;transition:transform .16s ease" style-hover="transform:scale(1.05) rotateY(-11deg) rotateX(3deg)">Полуфабрикаты</button>
-          <button onClick="{{ goOrder }}" style="align-self:flex-start;text-align:left;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:6px;padding:16px 30px 16px 22px;white-space:nowrap;box-shadow:10px 10px 0 #1A1512;animation:pop3d 1.1s .75s cubic-bezier(.2,.8,.25,1) both;transition:transform .16s ease" style-hover="transform:scale(1.05) rotateY(-11deg) rotateX(3deg)">Пироги</button>
-        </div>
+      <hero-oven-3d style="position:absolute;left:0;right:0;top:0;height:100%;display:block;pointer-events:none"></hero-oven-3d>
 
-        <div>
-          <div style="font-family:'Caveat',cursive;font-weight:700;font-size:180px;line-height:.86;color:#E8720C;animation:samWrite 1.9s .4s cubic-bezier(.5,.05,.5,.95) both">Самсы</div>
-          <div style="font-size:19px;letter-spacing:.42em;text-transform:uppercase;color:#1A1512;margin-top:14px;animation:fadeUp .7s 2.2s both">на заказ</div>
-        </div>
+      <div style="position:absolute;left:48px;bottom:0;z-index:2;pointer-events:none">
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:150px;line-height:.8;color:#E8720C;letter-spacing:-.01em;animation:samPop 1s .1s cubic-bezier(.2,.8,.25,1) both">САМСЫ</div>
+        <div style="font-family:'Caveat',cursive;font-weight:700;font-size:36px;letter-spacing:.22em;color:#1A1512;margin-top:2px;animation:fadeUp .7s 1s both">на заказ</div>
       </div>
 
-      <div style="position:relative;height:860px;display:flex;flex-direction:column;align-items:center;justify-content:space-between">
-        <p style="align-self:flex-end;max-width:420px;text-align:right;font-family:'Caveat',cursive;font-weight:500;font-size:24px;line-height:1.36;color:#1A1512;margin:0;text-wrap:pretty;animation:fadeUp .8s .2s both">Приготовлены из самых лучших продуктов. Сделаны с душой и любовью — доверьте свой выбор нам.</p>
-        <hero-oven-3d style="width:100%;height:660px;display:block"></hero-oven-3d>
-        <button onClick="{{ goOrder }}" style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:#FFF7E8;background:#D7263D;border:3px solid #1A1512;border-radius:999px;padding:20px 54px;white-space:nowrap;box-shadow:0 10px 0 rgba(26,21,18,.2);transition:transform .18s ease;animation:fadeUp .8s 4s both" style-hover="transform:scale(1.06)">Закажи прямо сейчас</button>
+      <div style="position:absolute;right:48px;bottom:26px;max-width:400px;text-align:right;z-index:2;pointer-events:none;animation:fadeUp .8s 1.8s both">
+        <p style="font-family:'Lora',serif;font-size:16px;line-height:1.55;color:#1A1512;margin:0">Самсы и пироги, приготовленные с любовью из лучших продуктов. Доверьте нам свой выбор и мы обещаем приятно удивить незабываемым вкусом узбекской кухни!</p>
+      </div>
+
+      <div style="position:absolute;right:48px;top:14px;display:flex;align-items:center;gap:22px;z-index:2;pointer-events:none;animation:fadeUp .9s 5.6s both">
+        <p style="max-width:340px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;line-height:1.42;color:#1A1512;margin:0;text-align:right">Я пеку самсы на заказ уже более 10-ти лет, и очень люблю своё дело. Моё лучшее хобби — дарить гастрономическое удовольствие от самс!!!</p>
+        <img src="uploads/повар.png" alt="Повар" style="width:200px;height:auto;display:block;flex:none">
       </div>
     </section>
 
