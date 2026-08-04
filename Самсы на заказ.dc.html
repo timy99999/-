@@ -25,14 +25,13 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 40px;
+    width: clamp(40px, calc(25vw - 360px), 200px);
     z-index: 1;
     pointer-events: none;
     background-repeat: repeat-y;
     background-position: top center;
     background-size: 100% auto;
-    opacity: .9;
-    background-image: url("uploads/uzbek-ornament-tile.png");
+    background-image: url("uploads/uzbek-ornament-orange.png");
   }
   .uz-border-left { left: 0; }
   .uz-border-right { right: 0; transform: scaleX(-1); }
