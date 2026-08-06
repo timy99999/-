@@ -21,6 +21,7 @@ export default async function handler(req, res) {
   const name = clean(body.name, 100).trim();
   const phone = clean(body.phone, 40).trim();
   const delivery = clean(body.delivery, 60).trim();
+  const address = clean(body.address, 200).trim();
   const date = clean(body.date, 40).trim();
   const comment = clean(body.comment, 400).trim() || '—';
   const items = Array.isArray(body.items) ? body.items.slice(0, 30).map(i => clean(i, 200)) : [];
@@ -42,6 +43,7 @@ export default async function handler(req, res) {
     'Имя: ' + name,
     'Телефон: ' + phone,
     'Способ доставки: ' + delivery,
+    'Адрес: ' + (address || '—'),
     'Дата и время: ' + (date || '—'),
     'Комментарий: ' + comment
   ].join('\n');
