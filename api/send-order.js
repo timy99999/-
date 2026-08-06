@@ -21,9 +21,11 @@ export default async function handler(req, res) {
   const name = clean(body.name, 100).trim();
   const phone = clean(body.phone, 40).trim();
   const delivery = clean(body.delivery, 60).trim();
+  const date = clean(body.date, 40).trim();
   const comment = clean(body.comment, 400).trim() || '—';
   const items = Array.isArray(body.items) ? body.items.slice(0, 30).map(i => clean(i, 200)) : [];
   const total = clean(body.total, 20);
+  const prepay = clean(body.prepay, 20);
 
   if (!name || !phone || !delivery || items.length === 0) {
     res.status(400).json({ error: 'Missing fields' });
@@ -35,10 +37,12 @@ export default async function handler(req, res) {
     '',
     ...items.map(i => '• ' + i),
     'Итого: ' + total + ' сом',
+    'Предоплата 50%: ' + prepay + ' сом',
     '',
     'Имя: ' + name,
     'Телефон: ' + phone,
     'Способ доставки: ' + delivery,
+    'Дата и время: ' + (date || '—'),
     'Комментарий: ' + comment
   ].join('\n');
 

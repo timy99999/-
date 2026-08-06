@@ -112,7 +112,7 @@
 
       <div style="position:absolute;left:48px;bottom:0;z-index:2;pointer-events:none">
         <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:150px;line-height:.8;color:#E8720C;letter-spacing:-.01em;animation:samPop 1s .1s cubic-bezier(.2,.8,.25,1) both">САМСЫ</div>
-        <div style="font-family:'Caveat',cursive;font-weight:700;font-size:36px;letter-spacing:.22em;color:#1A1512;margin-top:2px;animation:fadeUp .7s 1s both">на заказ</div>
+        <div style="font-family:'Caveat',cursive;font-weight:700;font-size:36px;letter-spacing:.22em;color:#1A1512;margin-top:2px;margin-left:8px;animation:fadeUp .7s 1s both">на заказ в Бишкеке</div>
       </div>
 
       <div style="position:absolute;right:16px;top:0;height:100%;display:flex;align-items:center;gap:24px;z-index:2;pointer-events:none;animation:fadeUp .9s 2.95s both">
@@ -135,7 +135,7 @@
         </div>
       </div>
       <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(46px,16vw,76px);line-height:.85;color:#E8720C;letter-spacing:-.01em;margin-top:4px">САМСЫ</div>
-      <div style="font-family:'Caveat',cursive;font-weight:700;font-size:22px;letter-spacing:.18em;color:#1A1512;margin-top:2px">на заказ</div>
+      <div style="font-family:'Caveat',cursive;font-weight:700;font-size:22px;letter-spacing:.18em;color:#1A1512;margin-top:2px">на заказ в Бишкеке</div>
       <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:24px;max-width:420px;margin-left:auto;margin-right:auto">
         <img src="uploads/повар.png" alt="Повар" style="height:150px;width:auto;flex:none">
         <p style="font-family:'Caveat',cursive;font-weight:700;font-size:19px;line-height:1.32;color:#1A1512;margin:0;text-align:left">Я пеку самсы на заказ уже более 10-ти лет, и очень люблю своё дело. Моё лучшее хобби — дарить гастрономическое удовольствие от самс!!!</p>
@@ -194,7 +194,7 @@
               </sc-if>
             </div>
             <sc-if value="{{ g_ready }}" hint-placeholder-val="{{ false }}">
-              <button onClick="{{ g_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
+              <button onClick="{{ g_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">{{ g_addLabel }}</button>
             </sc-if>
           </div>
           </div>
@@ -243,7 +243,7 @@
               </sc-if>
             </div>
             <sc-if value="{{ z_ready }}" hint-placeholder-val="{{ false }}">
-              <button onClick="{{ z_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
+              <button onClick="{{ z_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">{{ z_addLabel }}</button>
             </sc-if>
           </div>
           </div>
@@ -280,7 +280,7 @@
               </sc-if>
             </div>
             <sc-if value="{{ p_ready }}" hint-placeholder-val="{{ false }}">
-              <button onClick="{{ p_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">В корзину</button>
+              <button onClick="{{ p_add }}" style="width:100%;font-family:'Lora',serif;font-size:16px;color:#FFF7E8;border:3px solid #1A1512;border-radius:999px;padding:11px 20px;transition:transform .16s ease;background:#D7263D" style-hover="transform:scale(1.03)">{{ p_addLabel }}</button>
             </sc-if>
           </div>
           </div>
@@ -429,9 +429,13 @@
               </div>
             </sc-for>
           </div>
-          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:14px 0 20px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:14px 0 6px">
             <span style="font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Итого</span>
             <span style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;font-variant-numeric:tabular-nums;color:#D7263D">{{ totalLabel }}</span>
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 0 20px">
+            <span style="font-size:13px;letter-spacing:.1em;color:#8A837A">Предоплата 50%</span>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;color:#1A1512">{{ prepayLabel }}</span>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:16px">
@@ -460,6 +464,11 @@
               <span style="font-size:12px;color:#D7263D">{{ deliveryError }}</span>
             </div>
             <label style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Дата</span>
+              <input type="datetime-local" value="{{ fDate }}" min="{{ dateMin }}" onChange="{{ setDate }}" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid {{ dateBorder }};border-radius:10px;padding:12px 14px">
+              <span style="font-size:12px;color:#D7263D">{{ dateError }}</span>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:6px">
               <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8A837A">Комментарий к заказу <span style="text-transform:none;letter-spacing:0">— необязательно</span></span>
               <textarea rows="3" value="{{ fComment }}" onChange="{{ setComment }}" placeholder="Пожелания" style="font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#FFF7E8;border:3px solid #1A1512;border-radius:10px;padding:12px 14px;resize:vertical"></textarea>
             </label>
@@ -480,7 +489,7 @@
       <img src="uploads/Заказ принят.jpeg" alt="Заказ принят" style="width:100%;height:100%;min-height:200px;object-fit:cover">
       <div style="padding:clamp(20px,5vw,36px) clamp(18px,5vw,32px);display:flex;flex-direction:column;justify-content:center;gap:16px">
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,7vw,46px);font-weight:600;color:#E8720C;margin:0;line-height:1.05">Спасибо за заказ!</h3>
-        <p style="font-size:17px;line-height:1.6;margin:0">В течении {{ daysText }} ваш заказ будет принят и мы свяжемся с вами!</p>
+        <p style="font-size:17px;line-height:1.6;margin:0">В скором времени мы с вами свяжемся по указанному номеру.</p>
         <a href="{{ waHref }}" target="_blank" rel="noopener" style="align-self:flex-start;font-family:'Lora',serif;font-size:16px;color:#1A1512;background:#F28C1A;border:3px solid #1A1512;border-radius:999px;padding:13px 28px;transition:transform .16s ease" style-hover="transform:scale(1.07)">Написать в WhatsApp</a>
         <button onClick="{{ closeDone }}" style="align-self:flex-start;font-family:'Lora',serif;font-size:15px;color:#8A837A;background:transparent;border:none;text-decoration:underline">На главную</button>
       </div>
@@ -531,7 +540,8 @@ class Component extends DCLogic {
     cart: [],
     cartOpen: false,
     cook: 'samsa',
-    form: { name: '', phone: '', delivery: '', comment: '' },
+    justAdded: {},
+    form: { name: '', phone: '', delivery: '', date: '', comment: '' },
     touched: false,
     done: false,
     sending: false,
@@ -612,7 +622,7 @@ class Component extends DCLogic {
   }
 
   addToCart(pid) {
-    if (!this.ready(pid)) return;
+    if (!this.ready(pid) || this.state.justAdded[pid]) return;
     const s = this.state.sel[pid];
     const addQty = Math.max(1, s.qty || 1);
     const key = this.key(pid, s.dough, s.filling);
@@ -621,10 +631,18 @@ class Component extends DCLogic {
       const i = cart.findIndex(l => l.key === key);
       if (i < 0) cart.push({ key: key, pid: pid, dough: s.dough, filling: s.filling, qty: addQty });
       else cart[i].qty += addQty;
-      const sel = Object.assign({}, st.sel);
-      sel[pid] = { dough: null, filling: null, qty: 1 };
-      return { cart: cart, sel: sel };
+      const justAdded = Object.assign({}, st.justAdded, { [pid]: true });
+      return { cart: cart, justAdded: justAdded };
     });
+    setTimeout(() => {
+      this.setState(st => {
+        const sel = Object.assign({}, st.sel);
+        sel[pid] = { dough: null, filling: null, qty: 1 };
+        const justAdded = Object.assign({}, st.justAdded);
+        delete justAdded[pid];
+        return { sel: sel, justAdded: justAdded };
+      });
+    }, 1000);
   }
 
   changeQty(key, delta, seed) {
@@ -692,18 +710,28 @@ class Component extends DCLogic {
     return {
       name: f.name.trim().length > 1 ? '' : 'Укажите имя',
       phone: this.phoneOk(f.phone) ? '' : 'Например: +996700123456 или 0700123456',
-      delivery: f.delivery ? '' : 'Выберите способ доставки'
+      delivery: f.delivery ? '' : 'Выберите способ доставки',
+      date: f.date ? '' : 'Укажите дату и время'
     };
+  }
+
+  formatOrderDate(v) {
+    if (!v) return '';
+    const d = new Date(v);
+    if (isNaN(d.getTime())) return v;
+    const pad = n => String(n).padStart(2, '0');
+    return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
   }
 
   submit() {
     const v = this.validity();
-    if (v.name || v.phone || v.delivery || !this.state.cart.length) { this.setState({ touched: true }); return; }
+    if (v.name || v.phone || v.delivery || v.date || !this.state.cart.length) { this.setState({ touched: true }); return; }
     if (this.state.sending) return;
     const st = this.state;
     const deliveryLabel = st.form.delivery === 'pickup' ? 'Самовывоз' : 'Яндекс доставка (оплачивается вами)';
     const items = st.cart.map(l => this.lineTitle(l.pid, l.dough, l.filling) + ' × ' + l.qty + ' — ' + (this.price(l.pid, l.filling) * l.qty) + ' сом');
     const total = st.cart.reduce((a, l) => a + this.price(l.pid, l.filling) * l.qty, 0);
+    const prepay = Math.round(total * 0.5);
     this.setState({ sending: true, sendError: false });
     fetch('/api/send-order', {
       method: 'POST',
@@ -712,9 +740,11 @@ class Component extends DCLogic {
         name: st.form.name.trim(),
         phone: st.form.phone.trim(),
         delivery: deliveryLabel,
+        date: this.formatOrderDate(st.form.date),
         comment: st.form.comment.trim(),
         items: items,
-        total: total
+        total: total,
+        prepay: prepay
       })
     }).then(r => {
       if (!r.ok) throw new Error('bad status');
@@ -748,7 +778,7 @@ class Component extends DCLogic {
       goOrderFromCart: () => this.goSection('order'),
       openCart: () => this.setState({ cartOpen: true, done: false }),
       closeCart: () => this.setState({ cartOpen: false }),
-      closeDone: () => { this.setState({ done: false, cart: [], form: { name: '', phone: '', delivery: '', comment: '' }, touched: false, page: 'home' }); window.scrollTo({ top: 0 }); },
+      closeDone: () => { this.setState({ done: false, cart: [], form: { name: '', phone: '', delivery: '', date: '', comment: '' }, touched: false, page: 'home' }); window.scrollTo({ top: 0 }); },
       cartCount: st.cart.reduce((a, l) => a + l.qty, 0),
       cartEmpty: st.cart.length === 0,
       cookTitle: STEPS[st.cook].title,
@@ -777,6 +807,7 @@ class Component extends DCLogic {
       v[pid + '_priceLabel'] = pid === 'p' ? '1200 гр, 1000 сом' : (s.filling ? this.price(pid, s.filling) + ' сом' : 'Цена');
       v[pid + '_ready'] = ready;
       v[pid + '_add'] = () => this.addToCart(pid);
+      v[pid + '_addLabel'] = st.justAdded[pid] ? 'Добавлено ✓' : 'В корзину';
       v[pid + '_showMinus'] = (s.qty || 1) > 1;
       v[pid + '_qty'] = s.qty === 0 ? '' : s.qty;
       v[pid + '_plus'] = () => this.qtyPlus(pid);
@@ -808,6 +839,7 @@ class Component extends DCLogic {
     }));
     const total = st.cart.reduce((a, l) => a + this.price(l.pid, l.filling) * l.qty, 0);
     v.totalLabel = total + ' сом';
+    v.prepayLabel = Math.round(total * 0.5) + ' сом';
 
     const val = this.validity();
     const show = st.touched;
@@ -826,7 +858,14 @@ class Component extends DCLogic {
     v.yandexMark = st.form.delivery === 'yandex' ? '✓' : '';
     v.pickPickup = () => this.setField('delivery', 'pickup');
     v.pickYandex = () => this.setField('delivery', 'yandex');
-    const can = !val.name && !val.phone && !val.delivery && st.cart.length > 0 && !st.sending;
+    v.fDate = st.form.date;
+    v.setDate = e => this.setField('date', e.target.value);
+    v.dateError = show ? val.date : '';
+    v.dateBorder = v.dateError ? '#D7263D' : '#1A1512';
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    v.dateMin = now.toISOString().slice(0, 16);
+    const can = !val.name && !val.phone && !val.delivery && !val.date && st.cart.length > 0 && !st.sending;
     v.submitOff = st.sending;
     v.submitBg = can ? '#D7263D' : '#DCD6CC';
     v.submitColor = can ? '#FFF7E8' : '#8A837A';
